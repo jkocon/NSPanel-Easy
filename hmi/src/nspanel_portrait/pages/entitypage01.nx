@@ -53,25 +53,25 @@ on swipe.up:
     // From Left to Right
     if(swipec>swipedx)
     {
-      page home_page_id
+      // Kurantowka: swipe loop handled by the Blueprint
+      printh 92
+      prints "localevent",0
+      printh 00
+      prints "entitypage01,swipe,prev",0
+      printh 00
+      printh FF FF FF
     }
     // Right to Left
     swipec2=0-swipedx
     if(swipec<swipec2)
     {
-      if(is_entitypage02==1)
-      {
-        page entitypage02
-      }else if(is_entitypage03==1)
-      {
-        page entitypage03
-      }else if(is_entitypage04==1)
-      {
-        page entitypage04
-      }else
-      {
-        page home_page_id
-      }
+      // Kurantowka: swipe loop handled by the Blueprint
+      printh 92
+      prints "localevent",0
+      printh 00
+      prints "entitypage01,swipe,next",0
+      printh 00
+      printh FF FF FF
     }
   }
   // Touch has ended, y
