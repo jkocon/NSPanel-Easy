@@ -124,7 +124,7 @@ type = "text"
 sendkey = 3
 x = 65
 y = 300
-w = 70
+w = 240
 h = 30
 sta = 0
 font = "font-02"
@@ -132,7 +132,7 @@ picc = "picture-0037"
 pco = "#ffffff"
 xcen = 0
 txt = ""
-txt_maxl = 6
+txt_maxl = 24
 
 [[component]]
 name = "value02_icon"
@@ -156,7 +156,7 @@ type = "text"
 sendkey = 3
 x = 64
 y = 340
-w = 70
+w = 240
 h = 30
 sta = 0
 font = "font-02"
@@ -164,7 +164,7 @@ picc = "picture-0037"
 pco = "#ffffff"
 xcen = 0
 txt = ""
-txt_maxl = 6
+txt_maxl = 24
 
 [[component]]
 name = "value03_icon"
