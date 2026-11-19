@@ -6,7 +6,7 @@
 ##################################################################################################
 ---
 blueprint:
-  name: NSPanel Easy Configuration (v2026.11.17)
+  name: NSPanel Easy Configuration (v2026.11.17) - Kurantowka
   author: Edward Firmo (https://github.com/edwardtfn)
   description: >
     # NSPanel Easy Configuration via Blueprint
@@ -14,7 +14,7 @@ blueprint:
 
     This project enables comprehensive configuration of your NSPanel through a Blueprint featuring a user interface.
 
-  source_url: https://raw.githubusercontent.com/edwardtfn/NSPanel-Easy/refs/tags/latest/nspanel_easy_blueprint.yaml
+  source_url: https://raw.githubusercontent.com/jkocon/NSPanel-Easy/refs/heads/kurantowka/nspanel_easy_blueprint.yaml
   domain: automation
   homeassistant:
     min_version: 2026.10.0
@@ -10402,7 +10402,6 @@ actions:
                                     snapshot_attributes:
                                       climate:
                                         - supported_features
-                                        - hvac_modes
                                         - hvac_action
                                         - current_temperature
                                         - temperature
@@ -10412,8 +10411,6 @@ actions:
                                         - target_temperature_step
                                         - min_temp
                                         - max_temp
-                                        - preset_modes
-                                        - preset_mode
                                         - fan_modes
                                         - fan_mode
                                 - *send_entity_snapshot
@@ -11654,6 +11651,51 @@ actions:
                                     }}
                                 sequence:
                                   - *short_press_action_call
+
+              - alias: Climate swipe
+                # Swiping left or right on the climate page opens the next or previous climate entity assigned
+                # to the button pages, in button order, wrapping around. The panel sends the climate it shows.
+                conditions:
+                  - '{{ nspanel_event.type == "climate_swipe" }}'
+                sequence:
+                  - variables:
+                      swipe_climates: >-
+                        {{
+                          buttons_pages.buttons
+                          | selectattr("entity", "defined")
+                          | selectattr("entity", "string")
+                          | selectattr("entity", "match", "climate\.")
+                          | list
+                        }}
+                      swipe_current: '{{ nspanel_event.entity if nspanel_event.entity is defined else "" }}'
+                  - condition: '{{ swipe_climates | count > 1 }}'
+                  - variables:
+                      swipe_index: >-
+                        {%- set ns = namespace(idx=-1) -%}
+                        {%- for b in swipe_climates -%}
+                          {%- if ns.idx < 0 and b.entity == swipe_current -%}{%- set ns.idx = loop.index0 -%}{%- endif -%}
+                        {%- endfor -%}
+                        {%- set step = -1 if nspanel_event.direction is defined and nspanel_event.direction == "prev" else 1 -%}
+                        {{ ((ns.idx if ns.idx >= 0 else -1 if step > 0 else 0) + step) % (swipe_climates | count) }}
+                      last_click_button: '{{ swipe_climates[swipe_index | int(0)] }}'
+                      entity_id: '{{ last_click_button.entity }}'
+                      overlap:
+                        icon: >
+                          {{
+                            last_click_button.icon
+                            if
+                              last_click_button.icon is defined and
+                              last_click_button.icon is string and
+                              last_click_button.icon | length > 0 and
+                              last_click_button.icon is match "mdi:" and
+                              ((last_click_button.icon.split("mdi:") | last) in special_icons or ("," ~ (last_click_button.icon.split("mdi:") | last) ~ ",") in all_icon_names)
+                            else
+                              None
+                          }}
+                        name: '{{ last_click_button.name if last_click_button.name is defined else None }}'
+                      back_page: '{{ last_click_button.page }}'
+                  - *variable_entity
+                  - *entity_details_show
 
               - alias: Versions mismatch
                 conditions:

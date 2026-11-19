@@ -125,16 +125,32 @@ on swipe.up:
   if(tch0==0)
   {
     swipec=swipex-tch2
-    // From Left to Right
+    // From Left to Right: previous climate of the button pages (opened by the Blueprint)
     if(swipec>swipedx)
     {
-      //page
+      if(api==1&&climate_embedded==0)
+      {
+        printh 92
+        prints "localevent",0
+        printh 00
+        prints "climate,swipe,prev",0
+        printh 00
+        printh FF FF FF
+      }
     }
-    // Right to Left
+    // Right to Left: next climate of the button pages (opened by the Blueprint)
     swipec2=0-swipedx
     if(swipec<swipec2)
     {
-      //page
+      if(api==1&&climate_embedded==0)
+      {
+        printh 92
+        prints "localevent",0
+        printh 00
+        prints "climate,swipe,next",0
+        printh 00
+        printh FF FF FF
+      }
     }
   }
   // Touch has ended, y
