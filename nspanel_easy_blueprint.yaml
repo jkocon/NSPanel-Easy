@@ -11668,7 +11668,9 @@ actions:
                           | list
                         }}
                       swipe_current: '{{ nspanel_event.entity if nspanel_event.entity is defined else "" }}'
-                  - condition: '{{ swipe_climates | count > 1 }}'
+                  - condition: '{{ swipe_climates | count > 0 }}'
+                  # Kurantowka: the home page sits before the first and after the last climate:
+                  # home -> climate 1 -> ... -> climate N -> home (and back the other way).
                   - variables:
                       swipe_index: >-
                         {%- set ns = namespace(idx=-1) -%}
@@ -11676,7 +11678,19 @@ actions:
                           {%- if ns.idx < 0 and b.entity == swipe_current -%}{%- set ns.idx = loop.index0 -%}{%- endif -%}
                         {%- endfor -%}
                         {%- set step = -1 if nspanel_event.direction is defined and nspanel_event.direction == "prev" else 1 -%}
-                        {{ ((ns.idx if ns.idx >= 0 else -1 if step > 0 else 0) + step) % (swipe_climates | count) }}
+                        {%- set n = swipe_climates | count -%}
+                        {%- if ns.idx < 0 -%}{{ 0 if step > 0 else n - 1 }}
+                        {%- elif ns.idx + step < 0 or ns.idx + step >= n -%}-1
+                        {%- else -%}{{ ns.idx + step }}{%- endif -%}
+                  - if:
+                      - '{{ swipe_index | int(-1) < 0 }}'
+                    then:
+                      - action: 'esphome.{{ action_prefix }}_entity_details_show'
+                        data:
+                          entity: home
+                          back_page: ''
+                      - stop: Swiped past the last climate, back to home
+                  - variables:
                       last_click_button: '{{ swipe_climates[swipe_index | int(0)] }}'
                       entity_id: '{{ last_click_button.entity }}'
                       overlap:

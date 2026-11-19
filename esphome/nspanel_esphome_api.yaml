@@ -161,6 +161,11 @@ api:
             ESP_LOGV("${TAG_API}", "Action: entity_details_show");
             ESP_LOGV("${TAG_API}", "  entity:    '%s'", entity.c_str());
             ESP_LOGV("${TAG_API}", "  back_page: '%s'", back_page.c_str());
+            if (entity == "home") {
+              // Kurantowka: lets the Blueprint send the panel back to the home page (climate swipe past the ends)
+              goto_page->execute(home_page_id);
+              return;
+            }
             HomeAssistantEntity entity_id = extractHomeAssistantEntity(entity);
             if      (entity_id.domain == "alarm_control_panel") entity_id.domain = "alarm";
             else if (entity_id.domain == "input_boolean")       entity_id.domain = "switch";

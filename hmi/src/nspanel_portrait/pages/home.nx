@@ -97,18 +97,15 @@ on swipe.up:
       if(api==0)
       {
         call report_api_unavailable
-      }else if(is_buttonpage04>=1)
+      }else
       {
-        page buttonpage04
-      }else if(is_buttonpage03>=1)
-      {
-        page buttonpage03
-      }else if(is_buttonpage02>=1)
-      {
-        page buttonpage02
-      }else if(is_buttonpage01>=1)
-      {
-        page buttonpage01
+        // Kurantowka: horizontal swipe on home walks through the heating thermostats
+        printh 92
+        prints "localevent",0
+        printh 00
+        prints "home,swipe,prev",0
+        printh 00
+        printh FF FF FF
       }
     }
     // Right to Left swipe now navigates to home, looping back to the start.
@@ -119,18 +116,15 @@ on swipe.up:
       if(api==0)
       {
         call report_api_unavailable
-      }else if(is_buttonpage01>=1)
+      }else
       {
-        page buttonpage01
-      }else if(is_buttonpage02>=1)
-      {
-        page buttonpage02
-      }else if(is_buttonpage03>=1)
-      {
-        page buttonpage03
-      }else if(is_buttonpage04>=1)
-      {
-        page buttonpage04
+        // Kurantowka: horizontal swipe on home walks through the heating thermostats
+        printh 92
+        prints "localevent",0
+        printh 00
+        prints "home,swipe,next",0
+        printh 00
+        printh FF FF FF
       }
     }
   }

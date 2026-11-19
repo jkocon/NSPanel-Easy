@@ -114,6 +114,17 @@ script:
   - id: !extend event_from_display  # Defined by hw_display
     then:
       - lambda: |-
+          if (params[0] == "home" and params_count == 3 and params[1] == "swipe") {
+            // Kurantowka: a horizontal swipe on the home page starts walking the climates of the button pages
+            const std::string& value = params[2];
+            if (value != "next" and value != "prev") return;
+            ESP_LOGD("${TAG_PAGE_CLIMATE}", "Swipe %s from home", value.c_str());
+            fire_ha_event("climate_swipe", {
+              {"entity", "home"},
+              {"direction", value.c_str()}
+            });
+            return;
+          }  // if (home swipe)
           if (params[0] == "climate") {
               // CSV Format: climate,key,<value>
               // params[0]=page, params[1]=key, params[2]=value
