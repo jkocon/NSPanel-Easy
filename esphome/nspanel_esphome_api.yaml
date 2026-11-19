@@ -161,9 +161,10 @@ api:
             ESP_LOGV("${TAG_API}", "Action: entity_details_show");
             ESP_LOGV("${TAG_API}", "  entity:    '%s'", entity.c_str());
             ESP_LOGV("${TAG_API}", "  back_page: '%s'", back_page.c_str());
-            if (entity == "home" or entity.rfind("page:", 0) == 0) {
+            const std::string entity_str(entity.c_str());
+            if (entity_str == "home" or entity_str.rfind("page:", 0) == 0) {
               // Kurantowka: lets the Blueprint switch pages during the swipe loop ("home" or "page:<name>")
-              uint8_t target_page_id = (entity == "home") ? home_page_id : get_page_id(entity.substr(5).c_str());
+              uint8_t target_page_id = (entity_str == "home") ? home_page_id : get_page_id(entity_str.substr(5).c_str());
               if (target_page_id == UINT8_MAX) target_page_id = home_page_id;
               goto_page->execute(target_page_id);
               return;
