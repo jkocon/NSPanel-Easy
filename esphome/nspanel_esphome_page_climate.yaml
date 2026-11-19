@@ -356,7 +356,8 @@ script:
             disp1->hide_component("target_low");
 
             disp1->show_component("target_high");
-            disp1->show_component("climateslider");
+            // Kurantowka: the slider stays hidden, the target is set with the large - / + buttons
+            disp1->hide_component("climateslider");
 
           } else {
 
