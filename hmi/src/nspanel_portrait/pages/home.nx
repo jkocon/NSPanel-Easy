@@ -256,7 +256,8 @@ on meridiem.up:
   settings_timer.en=0
 
 on settings_timer.timer:
-  page settings
+  // Kurantowka: settings page locked for guests (brightness and theme are set from Home Assistant)
+  settings_timer.en=0
 
 on button01.down:
   short_click_tm.en=0

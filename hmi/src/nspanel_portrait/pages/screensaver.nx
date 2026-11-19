@@ -43,7 +43,21 @@ on screensaver.load:
     chip07.txt=home.chip07.txt
     chip07.pco=home.chip07.pco
   }
+  // Kurantowka: the display goes dark 10 minutes after the screensaver opens
+  off_count.val=0
+  if(esphome==1)
+  {
+    off_timer.en=1
+  }
   sendme
+
+on off_timer.timer:
+  off_count.val++
+  if(off_count.val>=10)
+  {
+    off_timer.en=0
+    dim=0
+  }
 
 on screensaver.up:
   page wakeup_page_id
@@ -98,7 +112,13 @@ on text.up:
 
 on apply_settings.timer:
   apply_settings.en=0
-  dim=brightness_sleep
+  if(off_count.val>=10)
+  {
+    dim=0
+  }else
+  {
+    dim=brightness_sleep
+  }
   // Kurantowka: page shows the logo picture (sta=2), no bco
   // Kurantowka: text crops the logo picture (sta=0), no bco
   text.font=screensaver_font
