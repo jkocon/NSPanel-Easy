@@ -58,10 +58,10 @@ script:
           refresh_datetime->execute();
           // Static labels of the page being shown
           ui_language_labels->execute();
-          // The Blueprint sends its own texts (names, labels, pages) again, translated by `ui_translate`:
-          // global settings as after an automation reload, then the page being shown
+          // The Blueprint renders the page being shown again; its texts are translated by `ui_translate`.
+          // No "boot" event here: it reruns the panel's boot sequence (version check, wake-up page) and,
+          // racing with the language picker, ended on the boot page and a restart.
           fire_ha_event("language_changed", {{"language", ui_language_code(ui_language())}});
-          fire_ha_event("boot", {{"step", "reload"}});
           if (current_page_id != get_page_id("boot") and current_page_id != get_page_id("popup_select")) {
             fire_ha_event("page_changed", {{"page", page_names[current_page_id]}, {"entity", detailed_entity->state.c_str()}});
           }  // if (page to render again)
