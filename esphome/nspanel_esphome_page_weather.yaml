@@ -61,11 +61,11 @@ script:
           }
 
           const char* const relative_days[5] = {
-            ui_text("${LOCALIZATION.pl.relative_day.today}", "${LOCALIZATION.en.relative_day.today}", "${LOCALIZATION.hu.relative_day.today}", "${LOCALIZATION.sk.relative_day.today}", "${LOCALIZATION.cs.relative_day.today}"),
-            ui_text("${LOCALIZATION.pl.relative_day.tomorrow}", "${LOCALIZATION.en.relative_day.tomorrow}", "${LOCALIZATION.hu.relative_day.tomorrow}", "${LOCALIZATION.sk.relative_day.tomorrow}", "${LOCALIZATION.cs.relative_day.tomorrow}"),
-            ui_text("${LOCALIZATION.pl.relative_day.in_2_days}", "${LOCALIZATION.en.relative_day.in_2_days}", "${LOCALIZATION.hu.relative_day.in_2_days}", "${LOCALIZATION.sk.relative_day.in_2_days}", "${LOCALIZATION.cs.relative_day.in_2_days}"),
-            ui_text("${LOCALIZATION.pl.relative_day.in_3_days}", "${LOCALIZATION.en.relative_day.in_3_days}", "${LOCALIZATION.hu.relative_day.in_3_days}", "${LOCALIZATION.sk.relative_day.in_3_days}", "${LOCALIZATION.cs.relative_day.in_3_days}"),
-            ui_text("${LOCALIZATION.pl.relative_day.in_4_days}", "${LOCALIZATION.en.relative_day.in_4_days}", "${LOCALIZATION.hu.relative_day.in_4_days}", "${LOCALIZATION.sk.relative_day.in_4_days}", "${LOCALIZATION.cs.relative_day.in_4_days}")
+            ${UI_RELATIVE_DAY_TODAY},
+            ${UI_RELATIVE_DAY_TOMORROW},
+            ${UI_RELATIVE_DAY_IN_2_DAYS},
+            ${UI_RELATIVE_DAY_IN_3_DAYS},
+            ${UI_RELATIVE_DAY_IN_4_DAYS}
           };
           disp1->set_component_text("day", relative_days[page_index]);
 

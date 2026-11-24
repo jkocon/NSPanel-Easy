@@ -90,8 +90,8 @@ script:
           // The TFT fills the slider from its `brightness` variable; sent again here, in case it was not received yet
           disp1->set_component_value("brightslider", static_cast<int>(display_brightness->state));
           disp1->set_component_text_printf("bright_text", "%i%%", static_cast<int>(display_brightness->state));
-          disp1->set_component_text("lbl_bright", ui_text("${LOCALIZATION.pl.settings.bright}", "${LOCALIZATION.en.settings.bright}", "${LOCALIZATION.hu.settings.bright}", "${LOCALIZATION.sk.settings.bright}", "${LOCALIZATION.cs.settings.bright}"));
-          disp1->set_component_text("lbl_dim", ui_text("${LOCALIZATION.pl.settings.dim}", "${LOCALIZATION.en.settings.dim}", "${LOCALIZATION.hu.settings.dim}", "${LOCALIZATION.sk.settings.dim}", "${LOCALIZATION.cs.settings.dim}"));
+          disp1->set_component_text("lbl_bright", ${UI_SETTINGS_BRIGHT});
+          disp1->set_component_text("lbl_dim", ${UI_SETTINGS_DIM});
 
   - id: !extend stop_page_constructors
     then:

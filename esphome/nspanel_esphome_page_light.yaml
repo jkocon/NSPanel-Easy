@@ -29,7 +29,7 @@ display:
               ESP_LOGD("${TAG_PAGE_LIGHT}", "Effect button tapped, opening popup select");
               popup_select_open->execute(
                 get_page_id("light"),
-                std::string(ui_text("${LOCALIZATION.pl.light.select_effect}", "${LOCALIZATION.en.light.select_effect}", "${LOCALIZATION.hu.light.select_effect}", "${LOCALIZATION.sk.light.select_effect}", "${LOCALIZATION.cs.light.select_effect}"))
+                std::string(${UI_LIGHT_SELECT_EFFECT})
               );
               return;
             }

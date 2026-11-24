@@ -39,10 +39,10 @@ script:
     then:
       - lambda: |-
           // Translated states of the home values, as set at boot
-          home_value_texts_set(ui_text("${LOCALIZATION.pl.unavailable}", "${LOCALIZATION.en.unavailable}", "${LOCALIZATION.hu.unavailable}", "${LOCALIZATION.sk.unavailable}", "${LOCALIZATION.cs.unavailable}"),
-                               ui_text("${LOCALIZATION.pl.unknown}", "${LOCALIZATION.en.unknown}", "${LOCALIZATION.hu.unknown}", "${LOCALIZATION.sk.unknown}", "${LOCALIZATION.cs.unknown}"),
-                               ui_text("${LOCALIZATION.pl.climate.states.on}", "${LOCALIZATION.en.climate.states.on}", "${LOCALIZATION.hu.climate.states.on}", "${LOCALIZATION.sk.climate.states.on}", "${LOCALIZATION.cs.climate.states.on}"),
-                               ui_text("${LOCALIZATION.pl.climate.states.off}", "${LOCALIZATION.en.climate.states.off}", "${LOCALIZATION.hu.climate.states.off}", "${LOCALIZATION.sk.climate.states.off}", "${LOCALIZATION.cs.climate.states.off}"));
+          home_value_texts_set(${UI_UNAVAILABLE},
+                               ${UI_UNKNOWN},
+                               ${UI_CLIMATE_STATES_ON},
+                               ${UI_CLIMATE_STATES_OFF});
           // Date and weekday names on the home page and screensaver
           refresh_datetime->execute();
           // Static labels of the page being shown

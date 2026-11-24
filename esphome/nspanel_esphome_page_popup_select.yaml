@@ -122,7 +122,7 @@ script:
                 popup_select_cache_mode != UINT8_MAX &&
                 !popup_select_cache_options.empty()) {
               ESP_LOGD("${TAG_PAGE_POPUP_SELECT}", "Cache complete on select page, opening picker");
-              std::string placeholder_title = ui_text("${LOCALIZATION.pl.select.please_select}", "${LOCALIZATION.en.select.please_select}", "${LOCALIZATION.hu.select.please_select}", "${LOCALIZATION.sk.select.please_select}", "${LOCALIZATION.cs.select.please_select}");
+              std::string placeholder_title = ${UI_SELECT_PLEASE_SELECT};
               popup_select_open->execute(last_page_id, placeholder_title);
             } else if (current_page_id == get_page_id("popup_select")) {
               // The picker is open: show the new selection on the option page being browsed, without

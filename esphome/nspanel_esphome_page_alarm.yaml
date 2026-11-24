@@ -165,17 +165,17 @@ script:
 
           // Buttons - Text
           ESP_LOGV("${TAG_PAGE_ALARM}", "Buttons - Text");
-          disp1->set_component_text("bt_home_text", wrapText(ui_text("${LOCALIZATION.pl.alarm.home}", "${LOCALIZATION.en.alarm.home}", "${LOCALIZATION.hu.alarm.home}", "${LOCALIZATION.sk.alarm.home}", "${LOCALIZATION.cs.alarm.home}"),
+          disp1->set_component_text("bt_home_text", wrapText(${LANG_ALARM_HOME},
                                     10, ${LANG_BYTES_PER_CHAR}).c_str());
-          disp1->set_component_text("bt_away_text", wrapText(ui_text("${LOCALIZATION.pl.alarm.away}", "${LOCALIZATION.en.alarm.away}", "${LOCALIZATION.hu.alarm.away}", "${LOCALIZATION.sk.alarm.away}", "${LOCALIZATION.cs.alarm.away}"),
+          disp1->set_component_text("bt_away_text", wrapText(${LANG_ALARM_AWAY},
                                     10, ${LANG_BYTES_PER_CHAR}).c_str());
-          disp1->set_component_text("bt_night_text", wrapText(ui_text("${LOCALIZATION.pl.alarm.night}", "${LOCALIZATION.en.alarm.night}", "${LOCALIZATION.hu.alarm.night}", "${LOCALIZATION.sk.alarm.night}", "${LOCALIZATION.cs.alarm.night}"),
+          disp1->set_component_text("bt_night_text", wrapText(${LANG_ALARM_NIGHT},
                                     10, ${LANG_BYTES_PER_CHAR}).c_str());
-          disp1->set_component_text("bt_vacat_text", wrapText(ui_text("${LOCALIZATION.pl.alarm.vacation}", "${LOCALIZATION.en.alarm.vacation}", "${LOCALIZATION.hu.alarm.vacation}", "${LOCALIZATION.sk.alarm.vacation}", "${LOCALIZATION.cs.alarm.vacation}"),
+          disp1->set_component_text("bt_vacat_text", wrapText(${LANG_ALARM_VACATION},
                                     10, ${LANG_BYTES_PER_CHAR}).c_str());
-          disp1->set_component_text("bt_bypass_text", wrapText(ui_text("${LOCALIZATION.pl.alarm.bypass}", "${LOCALIZATION.en.alarm.bypass}", "${LOCALIZATION.hu.alarm.bypass}", "${LOCALIZATION.sk.alarm.bypass}", "${LOCALIZATION.cs.alarm.bypass}"),
+          disp1->set_component_text("bt_bypass_text", wrapText(${LANG_ALARM_BYPASS},
                                     10, ${LANG_BYTES_PER_CHAR}).c_str());
-          disp1->set_component_text("bt_disarm_text", wrapText(ui_text("${LOCALIZATION.pl.alarm.disarm}", "${LOCALIZATION.en.alarm.disarm}", "${LOCALIZATION.hu.alarm.disarm}", "${LOCALIZATION.sk.alarm.disarm}", "${LOCALIZATION.cs.alarm.disarm}"),
+          disp1->set_component_text("bt_disarm_text", wrapText(${LANG_ALARM_DISARM},
                                     10, ${LANG_BYTES_PER_CHAR}).c_str());
 
           ESP_LOGV("${TAG_PAGE_ALARM}", "Done!");

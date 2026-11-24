@@ -92,8 +92,8 @@ script:
           const int hour12 = (now.hour == 0) ? 12 : (now.hour > 12) ? (now.hour - 12) : now.hour;
           nspanel_easy::replace_all(time_format_str, "%-I", to_string(hour12).c_str());
 
-          const char* const meridiem_text = (now.hour < 12) ? ui_text("${LOCALIZATION.pl.meridiem.am}", "${LOCALIZATION.en.meridiem.am}", "${LOCALIZATION.hu.meridiem.am}", "${LOCALIZATION.sk.meridiem.am}", "${LOCALIZATION.cs.meridiem.am}")
-                                                            : ui_text("${LOCALIZATION.pl.meridiem.pm}", "${LOCALIZATION.en.meridiem.pm}", "${LOCALIZATION.hu.meridiem.pm}", "${LOCALIZATION.sk.meridiem.pm}", "${LOCALIZATION.cs.meridiem.pm}");
+          const char* const meridiem_text = (now.hour < 12) ? ${UI_MERIDIEM_AM}
+                                                            : ${UI_MERIDIEM_PM};
           const bool has_meridiem = (time_format_str.find("%p") != std::string::npos);
 
           if (id(screensaver_display_time) && current_page_id == get_page_id("screensaver") &&
@@ -127,38 +127,38 @@ script:
     then:
       - lambda: |-
           const char* const weekdays[7] = {
-            ui_text("${LOCALIZATION.pl.weekdays.mon}", "${LOCALIZATION.en.weekdays.mon}", "${LOCALIZATION.hu.weekdays.mon}", "${LOCALIZATION.sk.weekdays.mon}", "${LOCALIZATION.cs.weekdays.mon}"),
-            ui_text("${LOCALIZATION.pl.weekdays.tue}", "${LOCALIZATION.en.weekdays.tue}", "${LOCALIZATION.hu.weekdays.tue}", "${LOCALIZATION.sk.weekdays.tue}", "${LOCALIZATION.cs.weekdays.tue}"),
-            ui_text("${LOCALIZATION.pl.weekdays.wed}", "${LOCALIZATION.en.weekdays.wed}", "${LOCALIZATION.hu.weekdays.wed}", "${LOCALIZATION.sk.weekdays.wed}", "${LOCALIZATION.cs.weekdays.wed}"),
-            ui_text("${LOCALIZATION.pl.weekdays.thu}", "${LOCALIZATION.en.weekdays.thu}", "${LOCALIZATION.hu.weekdays.thu}", "${LOCALIZATION.sk.weekdays.thu}", "${LOCALIZATION.cs.weekdays.thu}"),
-            ui_text("${LOCALIZATION.pl.weekdays.fri}", "${LOCALIZATION.en.weekdays.fri}", "${LOCALIZATION.hu.weekdays.fri}", "${LOCALIZATION.sk.weekdays.fri}", "${LOCALIZATION.cs.weekdays.fri}"),
-            ui_text("${LOCALIZATION.pl.weekdays.sat}", "${LOCALIZATION.en.weekdays.sat}", "${LOCALIZATION.hu.weekdays.sat}", "${LOCALIZATION.sk.weekdays.sat}", "${LOCALIZATION.cs.weekdays.sat}"),
-            ui_text("${LOCALIZATION.pl.weekdays.sun}", "${LOCALIZATION.en.weekdays.sun}", "${LOCALIZATION.hu.weekdays.sun}", "${LOCALIZATION.sk.weekdays.sun}", "${LOCALIZATION.cs.weekdays.sun}")
+            ${UI_WEEKDAYS_MON},
+            ${UI_WEEKDAYS_TUE},
+            ${UI_WEEKDAYS_WED},
+            ${UI_WEEKDAYS_THU},
+            ${UI_WEEKDAYS_FRI},
+            ${UI_WEEKDAYS_SAT},
+            ${UI_WEEKDAYS_SUN}
           };
           const char* const weekdays_short[7] = {
-            ui_text("${LOCALIZATION.pl.weekdays_short.mon}", "${LOCALIZATION.en.weekdays_short.mon}", "${LOCALIZATION.hu.weekdays_short.mon}", "${LOCALIZATION.sk.weekdays_short.mon}", "${LOCALIZATION.cs.weekdays_short.mon}"),
-            ui_text("${LOCALIZATION.pl.weekdays_short.tue}", "${LOCALIZATION.en.weekdays_short.tue}", "${LOCALIZATION.hu.weekdays_short.tue}", "${LOCALIZATION.sk.weekdays_short.tue}", "${LOCALIZATION.cs.weekdays_short.tue}"),
-            ui_text("${LOCALIZATION.pl.weekdays_short.wed}", "${LOCALIZATION.en.weekdays_short.wed}", "${LOCALIZATION.hu.weekdays_short.wed}", "${LOCALIZATION.sk.weekdays_short.wed}", "${LOCALIZATION.cs.weekdays_short.wed}"),
-            ui_text("${LOCALIZATION.pl.weekdays_short.thu}", "${LOCALIZATION.en.weekdays_short.thu}", "${LOCALIZATION.hu.weekdays_short.thu}", "${LOCALIZATION.sk.weekdays_short.thu}", "${LOCALIZATION.cs.weekdays_short.thu}"),
-            ui_text("${LOCALIZATION.pl.weekdays_short.fri}", "${LOCALIZATION.en.weekdays_short.fri}", "${LOCALIZATION.hu.weekdays_short.fri}", "${LOCALIZATION.sk.weekdays_short.fri}", "${LOCALIZATION.cs.weekdays_short.fri}"),
-            ui_text("${LOCALIZATION.pl.weekdays_short.sat}", "${LOCALIZATION.en.weekdays_short.sat}", "${LOCALIZATION.hu.weekdays_short.sat}", "${LOCALIZATION.sk.weekdays_short.sat}", "${LOCALIZATION.cs.weekdays_short.sat}"),
-            ui_text("${LOCALIZATION.pl.weekdays_short.sun}", "${LOCALIZATION.en.weekdays_short.sun}", "${LOCALIZATION.hu.weekdays_short.sun}", "${LOCALIZATION.sk.weekdays_short.sun}", "${LOCALIZATION.cs.weekdays_short.sun}")
+            ${UI_WEEKDAYS_SHORT_MON},
+            ${UI_WEEKDAYS_SHORT_TUE},
+            ${UI_WEEKDAYS_SHORT_WED},
+            ${UI_WEEKDAYS_SHORT_THU},
+            ${UI_WEEKDAYS_SHORT_FRI},
+            ${UI_WEEKDAYS_SHORT_SAT},
+            ${UI_WEEKDAYS_SHORT_SUN}
           };
           const char* const months[12] = {
-            ui_text("${LOCALIZATION.pl.months.jan}", "${LOCALIZATION.en.months.jan}", "${LOCALIZATION.hu.months.jan}", "${LOCALIZATION.sk.months.jan}", "${LOCALIZATION.cs.months.jan}"), ui_text("${LOCALIZATION.pl.months.feb}", "${LOCALIZATION.en.months.feb}", "${LOCALIZATION.hu.months.feb}", "${LOCALIZATION.sk.months.feb}", "${LOCALIZATION.cs.months.feb}"),
-            ui_text("${LOCALIZATION.pl.months.mar}", "${LOCALIZATION.en.months.mar}", "${LOCALIZATION.hu.months.mar}", "${LOCALIZATION.sk.months.mar}", "${LOCALIZATION.cs.months.mar}"), ui_text("${LOCALIZATION.pl.months.apr}", "${LOCALIZATION.en.months.apr}", "${LOCALIZATION.hu.months.apr}", "${LOCALIZATION.sk.months.apr}", "${LOCALIZATION.cs.months.apr}"),
-            ui_text("${LOCALIZATION.pl.months.may}", "${LOCALIZATION.en.months.may}", "${LOCALIZATION.hu.months.may}", "${LOCALIZATION.sk.months.may}", "${LOCALIZATION.cs.months.may}"), ui_text("${LOCALIZATION.pl.months.jun}", "${LOCALIZATION.en.months.jun}", "${LOCALIZATION.hu.months.jun}", "${LOCALIZATION.sk.months.jun}", "${LOCALIZATION.cs.months.jun}"),
-            ui_text("${LOCALIZATION.pl.months.jul}", "${LOCALIZATION.en.months.jul}", "${LOCALIZATION.hu.months.jul}", "${LOCALIZATION.sk.months.jul}", "${LOCALIZATION.cs.months.jul}"), ui_text("${LOCALIZATION.pl.months.aug}", "${LOCALIZATION.en.months.aug}", "${LOCALIZATION.hu.months.aug}", "${LOCALIZATION.sk.months.aug}", "${LOCALIZATION.cs.months.aug}"),
-            ui_text("${LOCALIZATION.pl.months.sep}", "${LOCALIZATION.en.months.sep}", "${LOCALIZATION.hu.months.sep}", "${LOCALIZATION.sk.months.sep}", "${LOCALIZATION.cs.months.sep}"), ui_text("${LOCALIZATION.pl.months.oct}", "${LOCALIZATION.en.months.oct}", "${LOCALIZATION.hu.months.oct}", "${LOCALIZATION.sk.months.oct}", "${LOCALIZATION.cs.months.oct}"),
-            ui_text("${LOCALIZATION.pl.months.nov}", "${LOCALIZATION.en.months.nov}", "${LOCALIZATION.hu.months.nov}", "${LOCALIZATION.sk.months.nov}", "${LOCALIZATION.cs.months.nov}"), ui_text("${LOCALIZATION.pl.months.dec}", "${LOCALIZATION.en.months.dec}", "${LOCALIZATION.hu.months.dec}", "${LOCALIZATION.sk.months.dec}", "${LOCALIZATION.cs.months.dec}")
+            ${UI_MONTHS_JAN}, ${UI_MONTHS_FEB},
+            ${UI_MONTHS_MAR}, ${UI_MONTHS_APR},
+            ${UI_MONTHS_MAY}, ${UI_MONTHS_JUN},
+            ${UI_MONTHS_JUL}, ${UI_MONTHS_AUG},
+            ${UI_MONTHS_SEP}, ${UI_MONTHS_OCT},
+            ${UI_MONTHS_NOV}, ${UI_MONTHS_DEC}
           };
           const char* const months_short[12] = {
-            ui_text("${LOCALIZATION.pl.months_short.jan}", "${LOCALIZATION.en.months_short.jan}", "${LOCALIZATION.hu.months_short.jan}", "${LOCALIZATION.sk.months_short.jan}", "${LOCALIZATION.cs.months_short.jan}"), ui_text("${LOCALIZATION.pl.months_short.feb}", "${LOCALIZATION.en.months_short.feb}", "${LOCALIZATION.hu.months_short.feb}", "${LOCALIZATION.sk.months_short.feb}", "${LOCALIZATION.cs.months_short.feb}"),
-            ui_text("${LOCALIZATION.pl.months_short.mar}", "${LOCALIZATION.en.months_short.mar}", "${LOCALIZATION.hu.months_short.mar}", "${LOCALIZATION.sk.months_short.mar}", "${LOCALIZATION.cs.months_short.mar}"), ui_text("${LOCALIZATION.pl.months_short.apr}", "${LOCALIZATION.en.months_short.apr}", "${LOCALIZATION.hu.months_short.apr}", "${LOCALIZATION.sk.months_short.apr}", "${LOCALIZATION.cs.months_short.apr}"),
-            ui_text("${LOCALIZATION.pl.months_short.may}", "${LOCALIZATION.en.months_short.may}", "${LOCALIZATION.hu.months_short.may}", "${LOCALIZATION.sk.months_short.may}", "${LOCALIZATION.cs.months_short.may}"), ui_text("${LOCALIZATION.pl.months_short.jun}", "${LOCALIZATION.en.months_short.jun}", "${LOCALIZATION.hu.months_short.jun}", "${LOCALIZATION.sk.months_short.jun}", "${LOCALIZATION.cs.months_short.jun}"),
-            ui_text("${LOCALIZATION.pl.months_short.jul}", "${LOCALIZATION.en.months_short.jul}", "${LOCALIZATION.hu.months_short.jul}", "${LOCALIZATION.sk.months_short.jul}", "${LOCALIZATION.cs.months_short.jul}"), ui_text("${LOCALIZATION.pl.months_short.aug}", "${LOCALIZATION.en.months_short.aug}", "${LOCALIZATION.hu.months_short.aug}", "${LOCALIZATION.sk.months_short.aug}", "${LOCALIZATION.cs.months_short.aug}"),
-            ui_text("${LOCALIZATION.pl.months_short.sep}", "${LOCALIZATION.en.months_short.sep}", "${LOCALIZATION.hu.months_short.sep}", "${LOCALIZATION.sk.months_short.sep}", "${LOCALIZATION.cs.months_short.sep}"), ui_text("${LOCALIZATION.pl.months_short.oct}", "${LOCALIZATION.en.months_short.oct}", "${LOCALIZATION.hu.months_short.oct}", "${LOCALIZATION.sk.months_short.oct}", "${LOCALIZATION.cs.months_short.oct}"),
-            ui_text("${LOCALIZATION.pl.months_short.nov}", "${LOCALIZATION.en.months_short.nov}", "${LOCALIZATION.hu.months_short.nov}", "${LOCALIZATION.sk.months_short.nov}", "${LOCALIZATION.cs.months_short.nov}"), ui_text("${LOCALIZATION.pl.months_short.dec}", "${LOCALIZATION.en.months_short.dec}", "${LOCALIZATION.hu.months_short.dec}", "${LOCALIZATION.sk.months_short.dec}", "${LOCALIZATION.cs.months_short.dec}")
+            ${UI_MONTHS_SHORT_JAN}, ${UI_MONTHS_SHORT_FEB},
+            ${UI_MONTHS_SHORT_MAR}, ${UI_MONTHS_SHORT_APR},
+            ${UI_MONTHS_SHORT_MAY}, ${UI_MONTHS_SHORT_JUN},
+            ${UI_MONTHS_SHORT_JUL}, ${UI_MONTHS_SHORT_AUG},
+            ${UI_MONTHS_SHORT_SEP}, ${UI_MONTHS_SHORT_OCT},
+            ${UI_MONTHS_SHORT_NOV}, ${UI_MONTHS_SHORT_DEC}
           };
 
           if (component.empty()) return;

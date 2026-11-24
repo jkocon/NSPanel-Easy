@@ -117,7 +117,7 @@ script:
           if (system_flags.tft_upload_active) return;
           if (system_flags.ota_in_progress) return;
           disp1->set_component_text("confirm.title", wrapText(
-                                                                ui_text("${LOCALIZATION.pl.please_confirm}", "${LOCALIZATION.en.please_confirm}", "${LOCALIZATION.hu.please_confirm}", "${LOCALIZATION.sk.please_confirm}", "${LOCALIZATION.cs.please_confirm}"),
+                                                                ${UI_PLEASE_CONFIRM},
                                                                 15,
                                                                 ${LANG_BYTES_PER_CHAR}
                                                               ).c_str()
