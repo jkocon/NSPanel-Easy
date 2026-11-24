@@ -30,8 +30,10 @@ api:
       then:
         - lambda: |-
             #ifdef NSPANEL_EASY_SUBSCRIBE
-            buttons_setup(page, page_label, labels, state_values, confirm, icon_font, temperature_unit,
-                          ${LANG_BYTES_PER_CHAR});
+            // Kurantowka: kept in Polish to draw again after a language change, shown translated
+            ui_buttons_setups()[page] = UiButtonsSetup{page_label, labels, state_values, confirm, icon_font, temperature_unit};
+            buttons_setup(page, ui_translate(page_label), ui_translate_all(labels), state_values, confirm, icon_font,
+                          temperature_unit, ${LANG_BYTES_PER_CHAR});
             #endif  // NSPANEL_EASY_SUBSCRIBE
 
 esphome:

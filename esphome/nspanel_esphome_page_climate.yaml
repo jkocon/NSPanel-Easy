@@ -193,7 +193,7 @@ script:
           const std::string &title = (details_overlap.entity == entity->entity_id && !details_overlap.title.empty())
                                          ? details_overlap.title
                                          : entity->name;
-          if (!title.empty()) disp1->set_component_text("page_label", title.c_str());
+          if (!title.empty()) disp1->set_component_text("page_label", ui_translate(title).c_str());  // Kurantowka
 
           const ClimateView view = climate_view(*entity);
           ESP_LOGV("${TAG_PAGE_CLIMATE}", "Snapshot: entity=%s state=%s features=%" PRIu32, entity->entity_id.c_str(),

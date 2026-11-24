@@ -43,6 +43,14 @@ script:
                                ${UI_UNKNOWN},
                                ${UI_CLIMATE_STATES_ON},
                                ${UI_CLIMATE_STATES_OFF});
+          #ifdef NSPANEL_EASY_SUBSCRIBE
+          // Button pages, from the setups the Blueprint sent once per session
+          for (const auto &item : ui_buttons_setups()) {
+            const UiButtonsSetup &setup = item.second;
+            buttons_setup(item.first, ui_translate(setup.page_label), ui_translate_all(setup.labels), setup.state_values,
+                          setup.confirm, setup.icon_font, setup.temperature_unit, ${LANG_BYTES_PER_CHAR});
+          }  // for (button page setups)
+          #endif  // NSPANEL_EASY_SUBSCRIBE
           // Date and weekday names on the home page and screensaver
           refresh_datetime->execute();
           // Static labels of the page being shown
@@ -64,6 +72,10 @@ script:
             disp1->set_component_text("temp_header", ui_text("Temperatura:", "Temperature:", "Hőmérséklet:", "Teplota:", "Teplota:"));
             disp1->set_component_text("label_current", ui_text("Aktualna", "Current", "Jelenlegi", "Aktuálna", "Aktuální"));
             disp1->set_component_text("label_target", ui_text("Zadana", "Target", "Beállított", "Nastavená", "Nastavená"));
+            // Room name: the title of the button that opened the page
+            if (!details_overlap.title.empty() and details_overlap.entity == detailed_entity->state) {
+              disp1->set_component_text("page_label", ui_translate(details_overlap.title).c_str());
+            }  // if (button title)
           } else if (current_page_id == get_page_id("home")) {
             disp1->set_component_font("bt_lang", id(home_custom_buttons_font_id));
             disp1->set_component_text("bt_lang", Icons::MDI_TRANSLATE);

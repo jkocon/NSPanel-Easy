@@ -1,6 +1,7 @@
 // entity_snapshot.cpp
 
 #include "entity_snapshot.h"
+#include "ui_dictionary.h"
 
 #include <cstdio>
 
@@ -175,7 +176,7 @@ std::string details_render_title(const SnapshotEntity &entity) {
 #endif  // NSPANEL_EASY_HW_DISPLAY
   const std::string &title = overlap_title.empty() ? entity.name : overlap_title;
   if (!title.empty()) {
-    nextion_display->set_component_text("page_label", title.c_str());
+    nextion_display->set_component_text("page_label", ui_translate(title).c_str());  // Kurantowka: translated
   }
 #ifdef NSPANEL_EASY_SUBSCRIBE
   const std::string icon =
