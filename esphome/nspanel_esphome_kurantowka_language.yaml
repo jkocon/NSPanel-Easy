@@ -1,7 +1,7 @@
 ---
 # Kurantowka: user interface language selectable at runtime (Polski, English, Magyar, Slovenčina, Čeština, Deutsch, Français, Español).
 #
-# - "Language" select in Home Assistant, restored after a reboot.
+# - "Language" select in Home Assistant; Polish after every restart (the default language).
 # - Globe button (home.bt_lang) opens the language picker on the panel.
 # - Every change fires the `language_changed` event, so the Blueprint sends its texts again in the new language.
 substitutions:
@@ -15,7 +15,7 @@ select:
     icon: mdi:translate
     entity_category: config
     optimistic: true
-    restore_value: true
+    restore_value: false  # Polish after every restart; guests pick their language with the globe
     initial_option: Polski
     options:
       - Polski
