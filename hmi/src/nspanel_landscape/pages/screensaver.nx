@@ -11,13 +11,13 @@ on screensaver.load:
     apply_settings.en=0
     text.font=4
     text.pco=16904  // Dark gray
-    text.txt="NSPanel Easy"
+    text.txt=""  // Kurantowka: the logo background is the start screen
     dim=10
   }
   // restore chips
   for(sys0=6;sys0<=15;sys0++)
   {
-    b[sys0].bco=screensaver.bco
+    // Kurantowka: chips crop the logo background, no bco
     b[sys0].font=chip_font
   }
   if(chips_screensaver==1)
@@ -99,8 +99,8 @@ on text.up:
 on apply_settings.timer:
   apply_settings.en=0
   dim=brightness_sleep
-  screensaver.bco=screensaver_bco
-  text.bco=screensaver_bco
+  // Kurantowka: page shows the logo picture (sta=2), no bco
+  // Kurantowka: text crops the logo picture (sta=0), no bco
   text.font=screensaver_font
   text.pco=screensaver_pco
 
