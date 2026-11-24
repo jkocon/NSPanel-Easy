@@ -291,8 +291,8 @@ script:
       # The states of a home value the panel translates by itself; any other text is shown as received.
       # In a lambda of its own, without preprocessor lines, which cannot be mixed with these substitutions.
       - lambda: |-
-          home_value_texts_set("${LOCALIZATION[LANG].unavailable}", "${LOCALIZATION[LANG].unknown}",
-                               "${LOCALIZATION[LANG].climate.states.on}", "${LOCALIZATION[LANG].climate.states.off}");
+          home_value_texts_set(ui_text("${LOCALIZATION.pl.unavailable}", "${LOCALIZATION.en.unavailable}", "${LOCALIZATION.hu.unavailable}", "${LOCALIZATION.sk.unavailable}", "${LOCALIZATION.cs.unavailable}"), ui_text("${LOCALIZATION.pl.unknown}", "${LOCALIZATION.en.unknown}", "${LOCALIZATION.hu.unknown}", "${LOCALIZATION.sk.unknown}", "${LOCALIZATION.cs.unknown}"),
+                               ui_text("${LOCALIZATION.pl.climate.states.on}", "${LOCALIZATION.en.climate.states.on}", "${LOCALIZATION.hu.climate.states.on}", "${LOCALIZATION.sk.climate.states.on}", "${LOCALIZATION.cs.climate.states.on}"), ui_text("${LOCALIZATION.pl.climate.states.off}", "${LOCALIZATION.en.climate.states.off}", "${LOCALIZATION.hu.climate.states.off}", "${LOCALIZATION.sk.climate.states.off}", "${LOCALIZATION.cs.climate.states.off}"));
 
   - id: !extend page_change
     then:

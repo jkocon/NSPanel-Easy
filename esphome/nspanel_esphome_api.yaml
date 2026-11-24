@@ -407,9 +407,9 @@ script:
           }  // if (txt_list.empty())
 
           std::string txt_str = txt_list.back();
-          if      (txt_str == "${SENTINEL_UNAVAILABLE}") txt_str = "${LOCALIZATION[LANG].unavailable}";
-          else if (txt_str == "${SENTINEL_UNKNOWN}")     txt_str = "${LOCALIZATION[LANG].unknown}";
-          else if (txt_str == "${SENTINEL_NO_NAME}")     txt_str = "${LOCALIZATION[LANG].no_name}";
+          if      (txt_str == "${SENTINEL_UNAVAILABLE}") txt_str = ui_text("${LOCALIZATION.pl.unavailable}", "${LOCALIZATION.en.unavailable}", "${LOCALIZATION.hu.unavailable}", "${LOCALIZATION.sk.unavailable}", "${LOCALIZATION.cs.unavailable}");
+          else if (txt_str == "${SENTINEL_UNKNOWN}")     txt_str = ui_text("${LOCALIZATION.pl.unknown}", "${LOCALIZATION.en.unknown}", "${LOCALIZATION.hu.unknown}", "${LOCALIZATION.sk.unknown}", "${LOCALIZATION.cs.unknown}");
+          else if (txt_str == "${SENTINEL_NO_NAME}")     txt_str = ui_text("${LOCALIZATION.pl.no_name}", "${LOCALIZATION.en.no_name}", "${LOCALIZATION.hu.no_name}", "${LOCALIZATION.sk.no_name}", "${LOCALIZATION.cs.no_name}");
           action_component_text->execute(page, component, txt_str);
 
   - id: action_component_val

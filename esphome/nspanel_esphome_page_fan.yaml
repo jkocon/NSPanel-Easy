@@ -37,7 +37,7 @@ display:
                 case 15:  // mode_button
                   popup_select_open->execute(
                     get_page_id("fan"),
-                    std::string("${LOCALIZATION[LANG].fan.select_preset_mode}")
+                    std::string(ui_text("${LOCALIZATION.pl.fan.select_preset_mode}", "${LOCALIZATION.en.fan.select_preset_mode}", "${LOCALIZATION.hu.fan.select_preset_mode}", "${LOCALIZATION.sk.fan.select_preset_mode}", "${LOCALIZATION.cs.fan.select_preset_mode}"))
                   );
                   break;
                 case 16:  // mode_bt1

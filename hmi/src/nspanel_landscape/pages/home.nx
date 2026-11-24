@@ -347,3 +347,12 @@ on short_click_tm.timer:
     printh FF FF FF
     click_comp.txt=""
   }
+
+on bt_lang.down:
+  short_click_tm.en=0
+  click_comp.txt="bt_lang"
+  click_timer.en=1
+
+on bt_lang.up:
+  click_timer.en=0
+  short_click_tm.en=1

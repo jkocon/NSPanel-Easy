@@ -764,3 +764,20 @@ vscope = 1
 sta = 1
 txt = ""
 txt_maxl = 6
+
+[[component]]
+name = "bt_lang"
+type = "text"
+vscope = 1
+sendkey = 1
+x = 255
+y = 185
+w = 45
+h = 42
+sta = 0
+font = "font-08"
+bco = "#000000"
+picc = "picture-0000"
+pco = "#cecfce"
+txt = ""
+txt_maxl = 3

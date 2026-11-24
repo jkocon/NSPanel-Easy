@@ -126,7 +126,7 @@ script:
           disp1->set_component_value("temp_offset", view.temp_offset);
           disp1->set_component_value("temp_step", view.temp_step);
           disp1->set_component_text("current_temp", water_heater_value_text(view.current, view.temp_step, suffix,
-                                                                            dec_sep, "${LOCALIZATION[LANG].unavailable}")
+                                                                            dec_sep, ui_text("${LOCALIZATION.pl.unavailable}", "${LOCALIZATION.en.unavailable}", "${LOCALIZATION.hu.unavailable}", "${LOCALIZATION.sk.unavailable}", "${LOCALIZATION.cs.unavailable}"))
                                                         .c_str());
 
           // Target and slider

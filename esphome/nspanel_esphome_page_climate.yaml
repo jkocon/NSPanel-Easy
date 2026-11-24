@@ -94,7 +94,7 @@ script:
           if (!climate_presets_to_picker(detailed_entity->state)) return;
           popup_select_open->execute(
             get_page_id("climate"),
-            std::string("${LOCALIZATION[LANG].climate.select_preset_mode}")
+            std::string(ui_text("${LOCALIZATION.pl.climate.select_preset_mode}", "${LOCALIZATION.en.climate.select_preset_mode}", "${LOCALIZATION.hu.climate.select_preset_mode}", "${LOCALIZATION.sk.climate.select_preset_mode}", "${LOCALIZATION.cs.climate.select_preset_mode}"))
           );
 
   # Opens the fan mode picker for the Home Assistant climate shown on the page (#292).
@@ -108,7 +108,7 @@ script:
           if (!climate_fan_modes_to_picker(detailed_entity->state)) return;
           popup_select_open->execute(
             get_page_id("climate"),
-            std::string("${LOCALIZATION[LANG].select.please_select}")
+            std::string(ui_text("${LOCALIZATION.pl.select.please_select}", "${LOCALIZATION.en.select.please_select}", "${LOCALIZATION.hu.select.please_select}", "${LOCALIZATION.sk.select.please_select}", "${LOCALIZATION.cs.select.please_select}"))
           );
 
   - id: !extend event_from_display  # Defined by hw_display
@@ -334,7 +334,7 @@ script:
             disp1->set_component_text("current_temp", adjustDecimalSeparator(buffer, dec_sep).c_str());
           } else {
             ESP_LOGV("${TAG_PAGE_CLIMATE}", "Show current temperature 'unavailable'");
-            disp1->set_component_text("current_temp", "${LOCALIZATION[LANG].unavailable}");
+            disp1->set_component_text("current_temp", ui_text("${LOCALIZATION.pl.unavailable}", "${LOCALIZATION.en.unavailable}", "${LOCALIZATION.hu.unavailable}", "${LOCALIZATION.sk.unavailable}", "${LOCALIZATION.cs.unavailable}"));
           }
 
           if (current_page_id != get_page_id("climate")) return;

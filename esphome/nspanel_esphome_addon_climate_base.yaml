@@ -444,7 +444,7 @@ script:
 
           popup_select_open->execute(
             get_page_id("climate"),
-            std::string("${LOCALIZATION[LANG].climate.select_preset_mode}")
+            std::string(ui_text("${LOCALIZATION.pl.climate.select_preset_mode}", "${LOCALIZATION.en.climate.select_preset_mode}", "${LOCALIZATION.hu.climate.select_preset_mode}", "${LOCALIZATION.sk.climate.select_preset_mode}", "${LOCALIZATION.cs.climate.select_preset_mode}"))
           );
 
   - id: !extend picker_selected  # Defined by page_popup_select
