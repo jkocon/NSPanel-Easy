@@ -47,10 +47,13 @@ script:
           refresh_datetime->execute();
           // Static labels of the page being shown
           ui_language_labels->execute();
-          // The Blueprint sends its own texts (names, labels, pages) again in the new language
-          fire_ha_event("language_changed", {
-            {"language", ui_language_code(ui_language())}
-          });
+          // The Blueprint sends its own texts (names, labels, pages) again, translated by `ui_translate`:
+          // global settings as after an automation reload, then the page being shown
+          fire_ha_event("language_changed", {{"language", ui_language_code(ui_language())}});
+          fire_ha_event("boot", {{"step", "reload"}});
+          if (current_page_id != get_page_id("boot") and current_page_id != get_page_id("popup_select")) {
+            fire_ha_event("page_changed", {{"page", page_names[current_page_id]}, {"entity", detailed_entity->state.c_str()}});
+          }  // if (page to render again)
 
   # Texts the TFT holds as fixed Polish labels
   - id: ui_language_labels

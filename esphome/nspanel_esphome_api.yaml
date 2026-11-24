@@ -227,6 +227,7 @@ api:
               ESP_LOGW("${TAG_API}", "Invalid entity snapshot, ignored");
               return;
             }  // if (invalid snapshot)
+            for (auto &entity : entity_snapshot.entities) entity.name = ui_translate(entity.name);  // Kurantowka
             ESP_LOGD("${TAG_API}", "Entity snapshot for page '%s' (%zu entities, constructor: %s)",
                      entity_snapshot.page.c_str(), entity_snapshot.entities.size(),
                      YESNO(entity_snapshot.constructor));
@@ -410,6 +411,7 @@ script:
           if      (txt_str == "${SENTINEL_UNAVAILABLE}") txt_str = ${UI_UNAVAILABLE};
           else if (txt_str == "${SENTINEL_UNKNOWN}")     txt_str = ${UI_UNKNOWN};
           else if (txt_str == "${SENTINEL_NO_NAME}")     txt_str = ${UI_NO_NAME};
+          else                                           txt_str = ui_translate(txt_str);  // Kurantowka: names and labels
           action_component_text->execute(page, component, txt_str);
 
   - id: action_component_val
