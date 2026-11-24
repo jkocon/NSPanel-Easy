@@ -81,7 +81,7 @@ script:
             }  // if (button title)
           } else if (current_page_id == get_page_id("home")) {
             disp1->set_component_font("bt_lang", id(home_custom_buttons_font_id));
-            disp1->set_component_text("bt_lang", Icons::MDI_TRANSLATE);
+            disp1->set_component_text("bt_lang", Icons::MDI_WEB);
           }  // if (current_page_id)
 
   - id: ui_language_picker_open
