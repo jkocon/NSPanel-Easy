@@ -1,5 +1,5 @@
 ---
-# Kurantowka: user interface language selectable at runtime (Polski, English, Magyar, Slovenčina, Čeština).
+# Kurantowka: user interface language selectable at runtime (Polski, English, Magyar, Slovenčina, Čeština, Deutsch, Français, Español).
 #
 # - "Language" select in Home Assistant, restored after a reboot.
 # - Globe button (home.bt_lang) opens the language picker on the panel.
@@ -23,6 +23,9 @@ select:
       - Magyar
       - Slovenčina
       - Čeština
+      - Deutsch
+      - Français
+      - Español
     on_value:
       then:
         - lambda: |-
@@ -69,9 +72,9 @@ script:
     then:
       - lambda: |-
           if (current_page_id == get_page_id("climate")) {
-            disp1->set_component_text("temp_header", ui_text("Temperatura:", "Temperature:", "Hőmérséklet:", "Teplota:", "Teplota:"));
-            disp1->set_component_text("label_current", ui_text("Aktualna", "Current", "Jelenlegi", "Aktuálna", "Aktuální"));
-            disp1->set_component_text("label_target", ui_text("Zadana", "Target", "Beállított", "Nastavená", "Nastavená"));
+            disp1->set_component_text("temp_header", ui_text("Temperatura:", "Temperature:", "Hőmérséklet:", "Teplota:", "Teplota:", "Temperatur:", "Température :", "Temperatura:"));
+            disp1->set_component_text("label_current", ui_text("Aktualna", "Current", "Jelenlegi", "Aktuálna", "Aktuální", "Aktuell", "Actuelle", "Actual"));
+            disp1->set_component_text("label_target", ui_text("Zadana", "Target", "Beállított", "Nastavená", "Nastavená", "Soll", "Consigne", "Objetivo"));
             // Room name: the title of the button that opened the page
             if (!details_overlap.title.empty() and details_overlap.entity == detailed_entity->state) {
               disp1->set_component_text("page_label", ui_translate(details_overlap.title).c_str());
@@ -85,14 +88,14 @@ script:
     mode: single
     then:
       - lambda: |-
-          static const char *const names[UI_LANGUAGE_COUNT] = {"Polski", "English", "Magyar", "Slovenčina", "Čeština"};
+          static const char *const names[UI_LANGUAGE_COUNT] = {"Polski", "English", "Magyar", "Slovenčina", "Čeština", "Deutsch", "Français", "Español"};
           std::vector<std::string> options(names, names + UI_LANGUAGE_COUNT);
           popup_select_cache_entity = "${UI_LANGUAGE_CONTEXT}";
           popup_select_cache_context = "${UI_LANGUAGE_CONTEXT}";
           popup_select_cache_mode = 0;  // Single selection
           popup_select_cache_options = std::move(options);
           popup_select_cache_mask = (1u << ui_language());
-          popup_select_open->execute(get_page_id("home"), std::string(ui_text("Język", "Language", "Nyelv", "Jazyk", "Jazyk")));
+          popup_select_open->execute(get_page_id("home"), std::string(ui_text("Język", "Language", "Nyelv", "Jazyk", "Jazyk", "Sprache", "Langue", "Idioma")));
 
   - id: !extend picker_selected  # Defined by page_popup_select
     then:
