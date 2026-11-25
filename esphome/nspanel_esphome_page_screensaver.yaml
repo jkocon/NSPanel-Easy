@@ -222,5 +222,8 @@ script:
     then:
       - lambda: |-
           if (current_page_id != get_page_id("screensaver")) return;
+          // Kurantowka: the screensaver turned the display off (display_power, kurantowka_language);
+          // restoring the sleep brightness here would light it again until the next touch
+          if (display_power->state == "off") return;
           disp1->send_command("dim=brightness_sleep");
 ...
