@@ -635,3 +635,35 @@ xcen = 1
 ycen = 1
 txt = "Zadana"
 txt_maxl = 20
+
+[[component]]
+name = "btn_prev"
+type = "text"
+x = 0
+y = 100
+w = 64
+h = 64
+sta = 0
+font = "font-08"
+picc = "picture-0037"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = ""
+txt_maxl = 4
+
+[[component]]
+name = "btn_next"
+type = "text"
+x = 416
+y = 100
+w = 64
+h = 64
+sta = 0
+font = "font-08"
+picc = "picture-0037"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = ""
+txt_maxl = 4

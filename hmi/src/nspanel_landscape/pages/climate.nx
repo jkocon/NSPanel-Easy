@@ -5,6 +5,18 @@ on climate.load:
   }
   // Kurantowka: no close button; the page is left by a swipe or the page timeout
   vis button_back,0
+  // Kurantowka: arrows to the previous/next climate (only for the climates opened by the Blueprint)
+  btn_prev.font=button_font.val
+  btn_next.font=button_font.val
+  if(api==1&&climate_embedded==0)
+  {
+    vis btn_prev,1
+    vis btn_next,1
+  }else
+  {
+    vis btn_prev,0
+    vis btn_next,0
+  }
   // Hide sliders and temperature display initially
   vis current_temp,0
   vis target_icon,0
@@ -514,3 +526,25 @@ on preset_button.down:
 
 on fan_button.down:
   fan_button.pco=31
+
+on btn_prev.up:
+  if(api==1&&climate_embedded==0)
+  {
+    printh 92
+    prints "localevent",0
+    printh 00
+    prints "climate,swipe,prev",0
+    printh 00
+    printh FF FF FF
+  }
+
+on btn_next.up:
+  if(api==1&&climate_embedded==0)
+  {
+    printh 92
+    prints "localevent",0
+    printh 00
+    prints "climate,swipe,next",0
+    printh 00
+    printh FF FF FF
+  }
