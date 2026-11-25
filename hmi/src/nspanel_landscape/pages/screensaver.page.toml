@@ -204,3 +204,13 @@ en = 0
 [[component]]
 name = "boot_count"
 type = "variable"
+
+[[component]]
+name = "off_timer"
+type = "timer"
+tim = 60000
+en = 0
+
+[[component]]
+name = "off_count"
+type = "variable"
