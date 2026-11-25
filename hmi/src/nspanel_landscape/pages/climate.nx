@@ -3,6 +3,8 @@ on climate.load:
   {
     page home_page_id
   }
+  // Kurantowka: no close button; the page is left by a swipe or the page timeout
+  vis button_back,0
   // Hide sliders and temperature display initially
   vis current_temp,0
   vis target_icon,0
