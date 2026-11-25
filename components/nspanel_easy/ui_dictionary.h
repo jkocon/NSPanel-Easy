@@ -52,6 +52,11 @@ inline constexpr UiDictionaryEntry UI_DICTIONARY[] = {
     {"Cisza nocna", "Quiet hours", "Csendes órák", "Nočný kľud", "Noční klid", "Nachtruhe", "Heures calmes", "Horas de silencio"},
     {"Właściciel (tel.)", "Owner (phone)", "Tulajdonos (tel.)", "Majiteľ (tel.)", "Majitel (tel.)", "Eigentümer (Tel.)", "Propriétaire (tél.)", "Propietario (tel.)"},
     {"Recepcja", "Reception", "Recepció", "Recepcia", "Recepce", "Rezeption", "Réception", "Recepción"},
+    // Climate page values (template sensors of the Kurantowka apartments)
+    {"Okno otwarte", "Window open", "Ablak nyitva", "Okno otvorené", "Okno otevřené", "Fenster offen", "Fenêtre ouverte", "Ventana abierta"},
+    {"Okno zamknięte", "Window closed", "Ablak zárva", "Okno zatvorené", "Okno zavřené", "Fenster geschlossen", "Fenêtre fermée", "Ventana cerrada"},
+    {"Grzeje", "Heating", "Fűt", "Kúri", "Topí", "Heizt", "Chauffe", "Calentando"},
+    {"Nie grzeje", "Not heating", "Nem fűt", "Nekúri", "Netopí", "Heizt nicht", "Ne chauffe pas", "Sin calentar"},
 };
 
 /// @brief The text in the current user interface language, or the text itself when it is not in the dictionary.
