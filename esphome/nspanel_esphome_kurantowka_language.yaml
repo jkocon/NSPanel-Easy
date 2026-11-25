@@ -2,11 +2,10 @@
 # Kurantowka: user interface language selectable at runtime (Polski, English, Magyar, Slovenčina, Čeština, Deutsch, Français, Español).
 #
 # - "Language" select in Home Assistant; Polish after every restart (the default language).
-# - Globe button (home.bt_lang) opens the language picker on the panel (click handled in hw_display).
+# - Globe button (home.bt_lang) opens the language page (click handled in hw_display); a tap on a language applies it.
 # - Every change fires the `language_changed` event, so the Blueprint sends its texts again in the new language.
 substitutions:
   TAG_UI_LANGUAGE: nspanel.ui_language
-  UI_LANGUAGE_CONTEXT: ui_language
 
 select:
   - id: ui_language_select
@@ -35,6 +34,21 @@ select:
             ESP_LOGI("${TAG_UI_LANGUAGE}", "Language: %s (%s)", x.c_str(), ui_language_code(ui_language()));
             if (!changed) return;
             ui_language_apply->execute();
+
+display:
+  - id: !extend disp1
+    on_touch:
+      then:
+        - lambda: |-
+            // Language page: lang0..lang7 are components 3..10, reported on release
+            if (page_id != get_page_id("language") or touch_event) return;
+            if (component_id < 3 or component_id >= 3 + UI_LANGUAGE_COUNT) return;
+            static const char *const names[UI_LANGUAGE_COUNT] = {"Polski", "English", "Magyar", "Slovenčina",
+                                                                 "Čeština", "Deutsch", "Français", "Español"};
+            const uint8_t index = component_id - 3;
+            ESP_LOGD("${TAG_UI_LANGUAGE}", "Picked: %s", names[index]);
+            // Applied by a script of its own, after this touch is handled, as the language change is long
+            ui_language_set->execute(names[index]);
 
 script:
   - id: ui_language_apply
@@ -79,33 +93,24 @@ script:
             if (!details_overlap.title.empty() and details_overlap.entity == detailed_entity->state) {
               disp1->set_component_text("page_label", ui_translate(details_overlap.title).c_str());
             }  // if (button title)
+          } else if (current_page_id == get_page_id("language")) {
+            disp1->set_component_text("lbl_title", ui_text("Język", "Language", "Nyelv", "Jazyk", "Jazyk", "Sprache", "Langue", "Idioma"));
+            disp1->set_component_font("btn_back", id(home_custom_buttons_font_id));
+            disp1->set_component_text("btn_back", Icons::MDI_ARROW_LEFT);
+            for (uint8_t idx = 0; idx < UI_LANGUAGE_COUNT; ++idx) {
+              // Selected: amber; others: the card gray
+              disp1->send_command_printf("lang%u.bco=%u", idx, idx == ui_language() ? 52165u : 14823u);
+            }  // for (languages)
           } else if (current_page_id == get_page_id("home")) {
             disp1->set_component_font("bt_lang", id(home_custom_buttons_font_id));
             disp1->set_component_text("bt_lang", Icons::MDI_WEB);
           }  // if (current_page_id)
 
+  # Opens the language page (the globe on the home page)
   - id: ui_language_picker_open
     mode: single
     then:
-      - lambda: |-
-          static const char *const names[UI_LANGUAGE_COUNT] = {"Polski", "English", "Magyar", "Slovenčina", "Čeština", "Deutsch", "Français", "Español"};
-          std::vector<std::string> options(names, names + UI_LANGUAGE_COUNT);
-          popup_select_cache_entity = "${UI_LANGUAGE_CONTEXT}";
-          popup_select_cache_context = "${UI_LANGUAGE_CONTEXT}";
-          popup_select_cache_mode = 0;  // Single selection
-          popup_select_cache_options = std::move(options);
-          popup_select_cache_mask = (1u << ui_language());
-          popup_select_open->execute(get_page_id("home"), std::string(ui_text("Język", "Language", "Nyelv", "Jazyk", "Jazyk", "Sprache", "Langue", "Idioma")));
-
-  - id: !extend picker_selected  # Defined by page_popup_select
-    then:
-      - lambda: |-
-          if (context != "${UI_LANGUAGE_CONTEXT}") return;
-          if (mask == 0 or value.empty()) return;
-          ESP_LOGD("${TAG_UI_LANGUAGE}", "Picked: %s", value.c_str());
-          // Applied by a script of its own, after this touch is handled: applying the language here nests every
-          // translation step inside the touch handling, deep enough to overflow the loop stack and reset the panel
-          ui_language_set->execute(value);
+      - lambda: goto_page->execute(get_page_id("language"));
 
   - id: ui_language_set
     mode: restart

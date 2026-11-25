@@ -27,7 +27,8 @@ constexpr const char *const page_names[] = {
     "entitypage01", "entitypage02", "entitypage03", "entitypage04", "fan",          "graph",        "keyb_num",
     "light",        "media_player", "notification", "popup_select", "qrcode",       "select",       "settings",
     "switch",       "timer",        "utilities",    "vacuum",       "water_heater", "weather01",    "weather02",
-    "weather03",    "weather04",    "weather05"};
+    "weather03",    "weather04",    "weather05",
+    "language"};  // Kurantowka: language page, kept last so the ids of the pages before it do not change
 
 constexpr size_t PAGE_COUNT = sizeof(page_names) / sizeof(page_names[0]);
 static_assert(PAGE_COUNT <= UINT8_MAX, "PAGE_COUNT exceeds uint8_t range");
@@ -117,6 +118,7 @@ inline uint8_t get_page_id(const esphome::StringRef &page_name) {
 // Compile-time guards for all pages.
 // Ensures no entry is accidentally removed or misspelled in page_names[].
 static_assert(get_page_id("alarm") != UINT8_MAX, "Missing required page: alarm");
+static_assert(get_page_id("language") != UINT8_MAX, "Missing required page: language");
 static_assert(get_page_id("boot") != UINT8_MAX, "Missing required page: boot");
 static_assert(get_page_id("button") != UINT8_MAX, "Missing required page: button");
 static_assert(get_page_id("buttonpage01") != UINT8_MAX, "Missing required page: buttonpage01");

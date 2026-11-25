@@ -1,0 +1,6 @@
+on language.load:
+  dim=brightness
+  sendme
+
+on btn_back.up:
+  page home_page_id

@@ -1,0 +1,179 @@
+[page]
+name = "language"
+type = "page"
+sendkey = 3
+x = 0
+y = 0
+w = 320
+h = 480
+sta = 2
+pic = "picture-0000"
+
+[[component]]
+name = "lbl_title"
+type = "text"
+x = 60
+y = 6
+w = 200
+h = 44
+sta = 0
+font = "font-03"
+picc = "picture-0000"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = "Język"
+txt_maxl = 20
+
+[[component]]
+name = "btn_back"
+type = "text"
+x = 6
+y = 6
+w = 48
+h = 44
+sta = 0
+picc = "picture-0000"
+font = "font-08"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = ""
+txt_maxl = 20
+
+[[component]]
+name = "lang0"
+type = "text"
+sendkey = 1
+x = 10
+y = 70
+w = 145
+h = 88
+sta = 1
+font = "font-03"
+bco = "#393c39"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = "Polski"
+txt_maxl = 20
+
+[[component]]
+name = "lang1"
+type = "text"
+sendkey = 1
+x = 165
+y = 70
+w = 145
+h = 88
+sta = 1
+font = "font-03"
+bco = "#393c39"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = "English"
+txt_maxl = 20
+
+[[component]]
+name = "lang2"
+type = "text"
+sendkey = 1
+x = 10
+y = 170
+w = 145
+h = 88
+sta = 1
+font = "font-03"
+bco = "#393c39"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = "Magyar"
+txt_maxl = 20
+
+[[component]]
+name = "lang3"
+type = "text"
+sendkey = 1
+x = 165
+y = 170
+w = 145
+h = 88
+sta = 1
+font = "font-03"
+bco = "#393c39"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = "Slovenčina"
+txt_maxl = 20
+
+[[component]]
+name = "lang4"
+type = "text"
+sendkey = 1
+x = 10
+y = 270
+w = 145
+h = 88
+sta = 1
+font = "font-03"
+bco = "#393c39"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = "Čeština"
+txt_maxl = 20
+
+[[component]]
+name = "lang5"
+type = "text"
+sendkey = 1
+x = 165
+y = 270
+w = 145
+h = 88
+sta = 1
+font = "font-03"
+bco = "#393c39"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = "Deutsch"
+txt_maxl = 20
+
+[[component]]
+name = "lang6"
+type = "text"
+sendkey = 1
+x = 10
+y = 370
+w = 145
+h = 88
+sta = 1
+font = "font-03"
+bco = "#393c39"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = "Français"
+txt_maxl = 20
+
+[[component]]
+name = "lang7"
+type = "text"
+sendkey = 1
+x = 165
+y = 370
+w = 145
+h = 88
+sta = 1
+font = "font-03"
+bco = "#393c39"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = "Español"
+txt_maxl = 20
+
