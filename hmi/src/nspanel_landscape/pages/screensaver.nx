@@ -43,7 +43,7 @@ on screensaver.load:
     chip07.txt=home.chip07.txt
     chip07.pco=home.chip07.pco
   }
-  // Kurantowka: the display goes dark 13 minutes after the screensaver opens
+  // Kurantowka: the display goes dark 3 minutes after the screensaver opens (5 minutes after the last touch)
   off_count.val=0
   if(esphome==1)
   {
@@ -53,7 +53,7 @@ on screensaver.load:
 
 on off_timer.timer:
   off_count.val++
-  if(off_count.val>=13)
+  if(off_count.val>=3)
   {
     off_timer.en=0
     dim=0
@@ -112,7 +112,7 @@ on text.up:
 
 on apply_settings.timer:
   apply_settings.en=0
-  if(off_count.val>=13)
+  if(off_count.val>=3)
   {
     dim=0
   }else
