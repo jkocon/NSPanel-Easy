@@ -57,6 +57,13 @@ on off_timer.timer:
   {
     off_timer.en=0
     dim=0
+    // Kurantowka: tells ESPHome the display is off (Display sensor in Home Assistant)
+    printh 92
+    prints "localevent",0
+    printh 00
+    prints "screensaver,display_off",0
+    printh 00
+    printh FF FF FF
   }
 
 on screensaver.up:

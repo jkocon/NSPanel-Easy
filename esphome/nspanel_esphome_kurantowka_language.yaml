@@ -49,7 +49,27 @@ display:
             // Applied by a script of its own, after this touch is handled, as the language change is long
             ui_language_set->execute(ui_language_name(index));
 
+text_sensor:
+  # Kurantowka: whether the display is lit ("on") or dark ("off"), for the master dashboard
+  - id: display_power
+    platform: template
+    name: Display
+    icon: mdi:monitor
+    update_interval: never
+
 script:
+  # The screensaver reports when it turns the display off; any page change lights it again
+  - id: !extend event_from_display
+    then:
+      - lambda: |-
+          if (params_count >= 2 and params[0] == "screensaver" and params[1] == "display_off") {
+            display_power->publish_state("off");
+          }
+
+  - id: !extend page_change
+    then:
+      - lambda: |-
+          if (display_power->state != "on") display_power->publish_state("on");
   - id: ui_language_apply
     mode: restart
     then:
