@@ -1,4 +1,7 @@
 on home.load:
+  // Kurantowka: draw the arrows again after the page is filled (components drawn later cover them)
+  arrow_cnt.val=0
+  arrow_tmr.en=1
   back_page_id=home_page_id
   // restore chips
   for(sys0=11;sys0<=20;sys0++)
@@ -385,4 +388,13 @@ on btn_next.up:
     prints "home,swipe,next",0
     printh 00
     printh FF FF FF
+  }
+
+on arrow_tmr.timer:
+  ref btn_prev
+  ref btn_next
+  arrow_cnt.val++
+  if(arrow_cnt.val>=8)
+  {
+    arrow_tmr.en=0
   }

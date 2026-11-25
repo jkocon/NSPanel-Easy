@@ -1,4 +1,7 @@
 on entitypage01.load:
+  // Kurantowka: draw the arrows again after the page is filled (components drawn later cover them)
+  arrow_cnt.val=0
+  arrow_tmr.en=1
   if(api==0)
   {
     page home_page_id
@@ -156,4 +159,13 @@ on btn_next.up:
     prints "entitypage01,swipe,next",0
     printh 00
     printh FF FF FF
+  }
+
+on arrow_tmr.timer:
+  ref btn_prev
+  ref btn_next
+  arrow_cnt.val++
+  if(arrow_cnt.val>=8)
+  {
+    arrow_tmr.en=0
   }

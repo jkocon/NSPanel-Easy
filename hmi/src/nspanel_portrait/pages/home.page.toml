@@ -792,12 +792,12 @@ txt_maxl = 3
 [[component]]
 name = "lbl_footer"
 type = "text"
-x = 52
-y = 422
-w = 216
-h = 22
+x = 58
+y = 418
+w = 204
+h = 28
 sta = 0
-font = "font-00"
+font = "font-02"
 picc = "picture-0000"
 pco = "#cecfce"
 xcen = 1
@@ -809,11 +809,11 @@ txt_maxl = 30
 name = "btn_prev"
 type = "text"
 x = 0
-y = 417
-w = 50
-h = 32
+y = 396
+w = 56
+h = 50
 sta = 0
-font = "font-08"
+font = "font-10"
 picc = "picture-0000"
 pco = "#ffffff"
 xcen = 1
@@ -824,15 +824,26 @@ txt_maxl = 4
 [[component]]
 name = "btn_next"
 type = "text"
-x = 270
-y = 417
-w = 50
-h = 32
+x = 264
+y = 396
+w = 56
+h = 50
 sta = 0
-font = "font-08"
+font = "font-10"
 picc = "picture-0000"
 pco = "#ffffff"
 xcen = 1
 ycen = 1
 txt = ""
 txt_maxl = 4
+
+[[component]]
+name = "arrow_tmr"
+type = "timer"
+tim = 500
+en = 0
+
+[[component]]
+name = "arrow_cnt"
+type = "variable"
+val = 0

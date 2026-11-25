@@ -503,3 +503,14 @@ xcen = 1
 ycen = 1
 txt = ""
 txt_maxl = 4
+
+[[component]]
+name = "arrow_tmr"
+type = "timer"
+tim = 500
+en = 0
+
+[[component]]
+name = "arrow_cnt"
+type = "variable"
+val = 0

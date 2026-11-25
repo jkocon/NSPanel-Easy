@@ -555,7 +555,7 @@ val = 8
 name = "preset_button"
 type = "text"
 sendkey = 3
-x = 141
+x = 204
 y = 413
 w = 48
 h = 48
@@ -666,3 +666,30 @@ xcen = 1
 ycen = 1
 txt = ""
 txt_maxl = 4
+
+[[component]]
+name = "btn_home"
+type = "text"
+x = 136
+y = 413
+w = 52
+h = 56
+sta = 0
+font = "font-10"
+picc = "picture-0037"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = ""
+txt_maxl = 4
+
+[[component]]
+name = "arrow_tmr"
+type = "timer"
+tim = 500
+en = 0
+
+[[component]]
+name = "arrow_cnt"
+type = "variable"
+val = 0
