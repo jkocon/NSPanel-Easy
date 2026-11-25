@@ -781,3 +781,19 @@ picc = "picture-0000"
 pco = "#cecfce"
 txt = ""
 txt_maxl = 3
+
+[[component]]
+name = "lbl_footer"
+type = "text"
+x = 133
+y = 270
+w = 200
+h = 16
+sta = 0
+font = "font-00"
+picc = "picture-0000"
+pco = "#cecfce"
+xcen = 1
+ycen = 1
+txt = "Panel Sterowania"
+txt_maxl = 30

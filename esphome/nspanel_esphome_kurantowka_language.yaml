@@ -106,6 +106,7 @@ script:
           } else if (current_page_id == get_page_id("home")) {
             disp1->set_component_font("bt_lang", id(home_custom_buttons_font_id));
             disp1->set_component_text("bt_lang", Icons::MDI_WEB);
+            disp1->set_component_text("lbl_footer", ui_text("Panel Sterowania", "Control Panel", "Vezérlőpult", "Ovládací panel", "Ovládací panel", "Bedienfeld", "Panneau de contrôle", "Panel de control"));
           }  // if (current_page_id)
 
   # Opens the language page (the globe on the home page)

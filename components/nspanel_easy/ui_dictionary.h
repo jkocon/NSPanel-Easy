@@ -60,7 +60,32 @@ inline std::string ui_translate(const std::string &text) {
   for (const auto &entry : UI_DICTIONARY) {
     if (text == entry.pl) return ui_text(entry.pl, entry.en, entry.hu, entry.sk, entry.cs, entry.de, entry.fr, entry.es);
   }
+  // Times of the daily schedule: "od 15:00" (from) and "do 11:00" (until)
+  if (text.rfind("od ", 0) == 0) {
+    const std::string rest = text.substr(3);
+    if (ui_language() == 2) return rest + "-tól";  // Hungarian: a suffix
+    return std::string(ui_text("od", "from", "", "od", "od", "ab", "à partir de", "desde")) + " " + rest;
+  }
+  if (text.rfind("do ", 0) == 0) {
+    const std::string rest = text.substr(3);
+    if (ui_language() == 2) return rest + "-ig";  // Hungarian: a suffix
+    return std::string(ui_text("do", "until", "", "do", "do", "bis", "jusqu'à", "hasta")) + " " + rest;
+  }
   return text;
+}
+
+/// @brief Translates the text of a raw Nextion text command (`component.txt="text"`), as the Blueprint sends
+/// for the labels of the entities pages; any other command is returned as it is.
+inline std::string ui_translate_command(const std::string &command) {
+  if (ui_language() == 0) return command;
+  static const std::string MARK = ".txt=\"";
+  const size_t start = command.find(MARK);
+  if (start == std::string::npos || command.size() < start + MARK.size() + 1 || command.back() != '"') return command;
+  const size_t text_start = start + MARK.size();
+  const std::string text = command.substr(text_start, command.size() - text_start - 1);
+  const std::string translated = ui_translate(text);
+  if (translated == text) return command;
+  return command.substr(0, text_start) + translated + "\"";
 }
 
 /// @brief A button page setup as received from the Blueprint (untranslated), drawn again after a language change.

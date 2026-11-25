@@ -396,7 +396,7 @@ script:
           if (page == "mem" && component == "command") {
             for (const auto& cmd : txt_list) {
               if (cmd.empty()) continue;
-              action_component_text->execute(page, component, cmd);
+              action_component_text->execute(page, component, ui_translate_command(cmd));  // Kurantowka: labels
             }
             return;
           }
