@@ -655,7 +655,7 @@ txt_maxl = 4
 [[component]]
 name = "btn_next"
 type = "text"
-x = 416
+x = 384
 y = 104
 w = 64
 h = 56
@@ -671,7 +671,7 @@ txt_maxl = 4
 [[component]]
 name = "btn_home"
 type = "text"
-x = 385
+x = 353
 y = 0
 w = 95
 h = 52
