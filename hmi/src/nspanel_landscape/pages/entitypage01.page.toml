@@ -471,3 +471,35 @@ picc = "picture-0000"
 pco = "#848284"
 txt = ""
 txt_maxl = 12
+
+[[component]]
+name = "btn_prev"
+type = "text"
+x = 0
+y = 280
+w = 60
+h = 40
+sta = 0
+font = "font-08"
+picc = "picture-0000"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = ""
+txt_maxl = 4
+
+[[component]]
+name = "btn_next"
+type = "text"
+x = 420
+y = 280
+w = 60
+h = 40
+sta = 0
+font = "font-08"
+picc = "picture-0000"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = ""
+txt_maxl = 4

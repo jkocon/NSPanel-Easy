@@ -133,3 +133,27 @@ on swipestore.timer:
 
 on button_back.down:
   page home_page_id
+
+// Kurantowka: arrows walk the swipe loop, like a horizontal swipe
+on btn_prev.up:
+  if(api==1)
+  {
+    printh 92
+    prints "localevent",0
+    printh 00
+    prints "entitypage01,swipe,prev",0
+    printh 00
+    printh FF FF FF
+  }
+
+// Kurantowka: arrows walk the swipe loop, like a horizontal swipe
+on btn_next.up:
+  if(api==1)
+  {
+    printh 92
+    prints "localevent",0
+    printh 00
+    prints "entitypage01,swipe,next",0
+    printh 00
+    printh FF FF FF
+  }

@@ -71,3 +71,19 @@ pco = "#ffffff"
 xcen = 0
 txt = ""
 txt_maxl = 30
+
+[[component]]
+name = "lbl_pass"
+type = "text"
+x = 0
+y = 340
+w = 320
+h = 40
+sta = 0
+font = "font-03"
+picc = "picture-0000"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = "Hasło: kurant2001"
+txt_maxl = 40
