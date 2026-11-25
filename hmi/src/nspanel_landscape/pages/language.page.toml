@@ -33,8 +33,8 @@ y = 10
 w = 44
 h = 40
 sta = 0
-picc = "picture-0000"
 font = "font-08"
+picc = "picture-0000"
 pco = "#ffffff"
 xcen = 1
 ycen = 1
@@ -42,7 +42,7 @@ txt = ""
 txt_maxl = 20
 
 [[component]]
-name = "lang0"
+name = "bg0"
 type = "text"
 sendkey = 1
 x = 17
@@ -54,126 +54,326 @@ font = "font-03"
 bco = "#393c39"
 pco = "#ffffff"
 xcen = 1
+ycen = 1
+txt = ""
+txt_maxl = 20
+[[component]]
+name = "bg1"
+type = "text"
+sendkey = 1
+x = 231
+y = 60
+w = 200
+h = 54
+sta = 1
+font = "font-03"
+bco = "#393c39"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = ""
+txt_maxl = 20
+[[component]]
+name = "bg2"
+type = "text"
+sendkey = 1
+x = 17
+y = 122
+w = 200
+h = 54
+sta = 1
+font = "font-03"
+bco = "#393c39"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = ""
+txt_maxl = 20
+[[component]]
+name = "bg3"
+type = "text"
+sendkey = 1
+x = 231
+y = 122
+w = 200
+h = 54
+sta = 1
+font = "font-03"
+bco = "#393c39"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = ""
+txt_maxl = 20
+[[component]]
+name = "bg4"
+type = "text"
+sendkey = 1
+x = 17
+y = 184
+w = 200
+h = 54
+sta = 1
+font = "font-03"
+bco = "#393c39"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = ""
+txt_maxl = 20
+[[component]]
+name = "bg5"
+type = "text"
+sendkey = 1
+x = 231
+y = 184
+w = 200
+h = 54
+sta = 1
+font = "font-03"
+bco = "#393c39"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = ""
+txt_maxl = 20
+[[component]]
+name = "bg6"
+type = "text"
+sendkey = 1
+x = 17
+y = 246
+w = 200
+h = 54
+sta = 1
+font = "font-03"
+bco = "#393c39"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = ""
+txt_maxl = 20
+[[component]]
+name = "bg7"
+type = "text"
+sendkey = 1
+x = 231
+y = 246
+w = 200
+h = 54
+sta = 1
+font = "font-03"
+bco = "#393c39"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = ""
+txt_maxl = 20
+[[component]]
+name = "flag0"
+type = "picture"
+sendkey = 1
+x = 29
+y = 71
+w = 48
+h = 32
+pic = "flag_pl"
+
+[[component]]
+name = "flag1"
+type = "picture"
+sendkey = 1
+x = 243
+y = 71
+w = 48
+h = 32
+pic = "flag_en"
+
+[[component]]
+name = "flag2"
+type = "picture"
+sendkey = 1
+x = 29
+y = 133
+w = 48
+h = 32
+pic = "flag_es"
+
+[[component]]
+name = "flag3"
+type = "picture"
+sendkey = 1
+x = 243
+y = 133
+w = 48
+h = 32
+pic = "flag_de"
+
+[[component]]
+name = "flag4"
+type = "picture"
+sendkey = 1
+x = 29
+y = 195
+w = 48
+h = 32
+pic = "flag_fr"
+
+[[component]]
+name = "flag5"
+type = "picture"
+sendkey = 1
+x = 243
+y = 195
+w = 48
+h = 32
+pic = "flag_sk"
+
+[[component]]
+name = "flag6"
+type = "picture"
+sendkey = 1
+x = 29
+y = 257
+w = 48
+h = 32
+pic = "flag_cs"
+
+[[component]]
+name = "flag7"
+type = "picture"
+sendkey = 1
+x = 243
+y = 257
+w = 48
+h = 32
+pic = "flag_hu"
+
+[[component]]
+name = "lab0"
+type = "text"
+sendkey = 1
+x = 87
+y = 64
+w = 124
+h = 46
+sta = 1
+font = "font-03"
+bco = "#393c39"
+pco = "#ffffff"
+xcen = 0
 ycen = 1
 txt = "Polski"
 txt_maxl = 20
-
 [[component]]
-name = "lang1"
+name = "lab1"
 type = "text"
 sendkey = 1
-x = 231
-y = 60
-w = 200
-h = 54
+x = 301
+y = 64
+w = 124
+h = 46
 sta = 1
 font = "font-03"
 bco = "#393c39"
 pco = "#ffffff"
-xcen = 1
+xcen = 0
 ycen = 1
 txt = "English"
 txt_maxl = 20
-
 [[component]]
-name = "lang2"
+name = "lab2"
 type = "text"
 sendkey = 1
-x = 17
-y = 122
-w = 200
-h = 54
+x = 87
+y = 126
+w = 124
+h = 46
 sta = 1
 font = "font-03"
 bco = "#393c39"
 pco = "#ffffff"
-xcen = 1
-ycen = 1
-txt = "Magyar"
-txt_maxl = 20
-
-[[component]]
-name = "lang3"
-type = "text"
-sendkey = 1
-x = 231
-y = 122
-w = 200
-h = 54
-sta = 1
-font = "font-03"
-bco = "#393c39"
-pco = "#ffffff"
-xcen = 1
-ycen = 1
-txt = "Slovenčina"
-txt_maxl = 20
-
-[[component]]
-name = "lang4"
-type = "text"
-sendkey = 1
-x = 17
-y = 184
-w = 200
-h = 54
-sta = 1
-font = "font-03"
-bco = "#393c39"
-pco = "#ffffff"
-xcen = 1
-ycen = 1
-txt = "Čeština"
-txt_maxl = 20
-
-[[component]]
-name = "lang5"
-type = "text"
-sendkey = 1
-x = 231
-y = 184
-w = 200
-h = 54
-sta = 1
-font = "font-03"
-bco = "#393c39"
-pco = "#ffffff"
-xcen = 1
-ycen = 1
-txt = "Deutsch"
-txt_maxl = 20
-
-[[component]]
-name = "lang6"
-type = "text"
-sendkey = 1
-x = 17
-y = 246
-w = 200
-h = 54
-sta = 1
-font = "font-03"
-bco = "#393c39"
-pco = "#ffffff"
-xcen = 1
-ycen = 1
-txt = "Français"
-txt_maxl = 20
-
-[[component]]
-name = "lang7"
-type = "text"
-sendkey = 1
-x = 231
-y = 246
-w = 200
-h = 54
-sta = 1
-font = "font-03"
-bco = "#393c39"
-pco = "#ffffff"
-xcen = 1
+xcen = 0
 ycen = 1
 txt = "Español"
 txt_maxl = 20
-
+[[component]]
+name = "lab3"
+type = "text"
+sendkey = 1
+x = 301
+y = 126
+w = 124
+h = 46
+sta = 1
+font = "font-03"
+bco = "#393c39"
+pco = "#ffffff"
+xcen = 0
+ycen = 1
+txt = "Deutsch"
+txt_maxl = 20
+[[component]]
+name = "lab4"
+type = "text"
+sendkey = 1
+x = 87
+y = 188
+w = 124
+h = 46
+sta = 1
+font = "font-03"
+bco = "#393c39"
+pco = "#ffffff"
+xcen = 0
+ycen = 1
+txt = "Français"
+txt_maxl = 20
+[[component]]
+name = "lab5"
+type = "text"
+sendkey = 1
+x = 301
+y = 188
+w = 124
+h = 46
+sta = 1
+font = "font-03"
+bco = "#393c39"
+pco = "#ffffff"
+xcen = 0
+ycen = 1
+txt = "Slovenčina"
+txt_maxl = 20
+[[component]]
+name = "lab6"
+type = "text"
+sendkey = 1
+x = 87
+y = 250
+w = 124
+h = 46
+sta = 1
+font = "font-03"
+bco = "#393c39"
+pco = "#ffffff"
+xcen = 0
+ycen = 1
+txt = "Čeština"
+txt_maxl = 20
+[[component]]
+name = "lab7"
+type = "text"
+sendkey = 1
+x = 301
+y = 250
+w = 124
+h = 46
+sta = 1
+font = "font-03"
+bco = "#393c39"
+pco = "#ffffff"
+xcen = 0
+ycen = 1
+txt = "Magyar"
+txt_maxl = 20

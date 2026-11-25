@@ -180,6 +180,14 @@ pictures = [
     "picture-0131",
     "picture-0132",
     "picture-0133",
+    "flag_pl",
+    "flag_en",
+    "flag_es",
+    "flag_de",
+    "flag_fr",
+    "flag_sk",
+    "flag_cs",
+    "flag_hu",
 ]
 fonts = [
     "font-00",

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <cstring>
 
 namespace esphome::nspanel_easy {
 
@@ -23,6 +24,26 @@ inline const char *ui_language_code(uint8_t index) {
   static const char *const codes[UI_LANGUAGE_COUNT] = {"pl", "en", "hu", "sk", "cs", "de", "fr", "es"};
   return index < UI_LANGUAGE_COUNT ? codes[index] : codes[0];
 }
+
+/// @brief Names of the languages, in index order (the options of the "Language" select).
+inline const char *ui_language_name(uint8_t index) {
+  static const char *const names[UI_LANGUAGE_COUNT] = {"Polski",  "English", "Magyar",   "Slovenčina",
+                                                       "Čeština", "Deutsch", "Français", "Español"};
+  return index < UI_LANGUAGE_COUNT ? names[index] : names[0];
+}
+
+/// @brief The language index of a name; Polish when not found.
+inline uint8_t ui_language_index(const char *name) {
+  for (uint8_t index = 0; index < UI_LANGUAGE_COUNT; ++index) {
+    if (std::strcmp(ui_language_name(index), name) == 0)
+      return index;
+  }  // for (index)
+  return 0;
+}
+
+/// @brief Language index of each slot of the language page, in the order shown:
+/// Polski, English, Español, Deutsch, Français, Slovenčina, Čeština, Magyar.
+inline constexpr uint8_t UI_LANGUAGE_SLOTS[UI_LANGUAGE_COUNT] = {0, 1, 7, 5, 6, 3, 4, 2};
 
 /// @brief The text for the current user interface language; Polish is the fallback.
 inline const char *ui_text(const char *pl, const char *en, const char *hu, const char *sk, const char *cs,

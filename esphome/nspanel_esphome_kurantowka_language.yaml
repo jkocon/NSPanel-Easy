@@ -19,16 +19,17 @@ select:
     options:
       - Polski
       - English
-      - Magyar
-      - Slovenčina
-      - Čeština
+      - Español
       - Deutsch
       - Français
-      - Español
+      - Slovenčina
+      - Čeština
+      - Magyar
     on_value:
       then:
         - lambda: |-
-            const uint8_t index = static_cast<uint8_t>(i);
+            // Options are in the order shown on the panel; the language index follows ui_language.h
+            const uint8_t index = ui_language_index(x.c_str());
             const bool changed = ui_language() != index;
             ui_language() = index < UI_LANGUAGE_COUNT ? index : 0;
             ESP_LOGI("${TAG_UI_LANGUAGE}", "Language: %s (%s)", x.c_str(), ui_language_code(ui_language()));
@@ -40,15 +41,13 @@ display:
     on_touch:
       then:
         - lambda: |-
-            // Language page: lang0..lang7 are components 3..10, reported on release
+            // Language page: each slot is a background (ids 3..10), a flag (11..18) and a name (19..26)
             if (page_id != get_page_id("language") or touch_event) return;
-            if (component_id < 3 or component_id >= 3 + UI_LANGUAGE_COUNT) return;
-            static const char *const names[UI_LANGUAGE_COUNT] = {"Polski", "English", "Magyar", "Slovenčina",
-                                                                 "Čeština", "Deutsch", "Français", "Español"};
-            const uint8_t index = component_id - 3;
-            ESP_LOGD("${TAG_UI_LANGUAGE}", "Picked: %s", names[index]);
+            if (component_id < 3 or component_id >= 3 + 3 * UI_LANGUAGE_COUNT) return;
+            const uint8_t index = UI_LANGUAGE_SLOTS[(component_id - 3) % UI_LANGUAGE_COUNT];
+            ESP_LOGD("${TAG_UI_LANGUAGE}", "Picked: %s", ui_language_name(index));
             // Applied by a script of its own, after this touch is handled, as the language change is long
-            ui_language_set->execute(names[index]);
+            ui_language_set->execute(ui_language_name(index));
 
 script:
   - id: ui_language_apply
@@ -97,10 +96,13 @@ script:
             disp1->set_component_text("lbl_title", ui_text("Język", "Language", "Nyelv", "Jazyk", "Jazyk", "Sprache", "Langue", "Idioma"));
             disp1->set_component_font("btn_back", id(home_custom_buttons_font_id));
             disp1->set_component_text("btn_back", Icons::MDI_ARROW_LEFT);
-            for (uint8_t idx = 0; idx < UI_LANGUAGE_COUNT; ++idx) {
-              // Selected: amber; others: the card gray
-              disp1->send_command_printf("lang%u.bco=%u", idx, idx == ui_language() ? 52165u : 14823u);
-            }  // for (languages)
+            for (uint8_t slot = 0; slot < UI_LANGUAGE_COUNT; ++slot) {
+              if (UI_LANGUAGE_SLOTS[slot] != ui_language()) continue;
+              // Selected: blue background; the flag is drawn again on top of it
+              disp1->send_command_printf("bg%u.bco=1055", slot);
+              disp1->send_command_printf("lab%u.bco=1055", slot);
+              disp1->send_command_printf("ref flag%u", slot);
+            }  // for (slots)
           } else if (current_page_id == get_page_id("home")) {
             disp1->set_component_font("bt_lang", id(home_custom_buttons_font_id));
             disp1->set_component_text("bt_lang", Icons::MDI_WEB);
