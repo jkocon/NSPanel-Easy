@@ -326,6 +326,12 @@ script:
                 return;
               }
 
+              // Kurantowka: the globe button opens the language picker, from the first moment after a start
+              if (page == "home" and params[2] == "bt_lang") {
+                ui_language_picker_open->execute();
+                return;
+              }  // if (globe button)
+
               // A page package may claim the click, e.g. to ask for confirmation
               if (click_interceptor and click_interceptor(page, event, params[2])) {
                 ESP_LOGD("${TAG_HW_DISPLAY}", "%s handled locally", event.c_str());

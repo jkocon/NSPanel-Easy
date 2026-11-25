@@ -2,7 +2,7 @@
 # Kurantowka: user interface language selectable at runtime (Polski, English, Magyar, Slovenčina, Čeština, Deutsch, Français, Español).
 #
 # - "Language" select in Home Assistant; Polish after every restart (the default language).
-# - Globe button (home.bt_lang) opens the language picker on the panel.
+# - Globe button (home.bt_lang) opens the language picker on the panel (click handled in hw_display).
 # - Every change fires the `language_changed` event, so the Blueprint sends its texts again in the new language.
 substitutions:
   TAG_UI_LANGUAGE: nspanel.ui_language
@@ -103,8 +103,21 @@ script:
           if (context != "${UI_LANGUAGE_CONTEXT}") return;
           if (mask == 0 or value.empty()) return;
           ESP_LOGD("${TAG_UI_LANGUAGE}", "Picked: %s", value.c_str());
-          id(ui_language_select).publish_state(value);
+          // Applied by a script of its own, after this touch is handled: applying the language here nests every
+          // translation step inside the touch handling, deep enough to overflow the loop stack and reset the panel
+          ui_language_set->execute(value);
+
+  - id: ui_language_set
+    mode: restart
+    parameters:
+      option: string
+    then:
+      - delay: 50ms
+      - lambda: |-
           goto_page->execute(get_page_id("home"));
+      - delay: 100ms
+      - lambda: |-
+          id(ui_language_select).publish_state(option);
 
   - id: !extend page_change
     then:
@@ -112,19 +125,7 @@ script:
 
   - id: !extend boot_wrap_up
     then:
-      - lambda: |-
-          // The globe button opens the language picker; any other click goes to the previous interceptor
-          ClickInterceptor previous = click_interceptor;
-          click_interceptor = [previous](const std::string &page,
-                                         const std::string &event,
-                                         const std::string &component) -> bool {
-            if (page == "home" and component == "bt_lang") {
-              if (event == "short_click" or event == "long_click") ui_language_picker_open->execute();
-              return true;
-            }  // if (globe button)
-            return previous ? previous(page, event, component) : false;
-          };
-          ui_language_labels->execute();
+      - lambda: ui_language_labels->execute();
 
   - id: !extend dump_config
     then:
