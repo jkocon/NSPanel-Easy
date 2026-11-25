@@ -164,8 +164,13 @@ on btn_next.up:
 on arrow_tmr.timer:
   ref btn_prev
   ref btn_next
+  ref btn_home
   arrow_cnt.val++
   if(arrow_cnt.val>=8)
   {
     arrow_tmr.en=0
   }
+
+// Kurantowka: back to the home page
+on btn_home.up:
+  page home_page_id

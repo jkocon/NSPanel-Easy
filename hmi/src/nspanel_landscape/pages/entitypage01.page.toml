@@ -514,3 +514,19 @@ en = 0
 name = "arrow_cnt"
 type = "variable"
 val = 0
+
+[[component]]
+name = "btn_home"
+type = "text"
+x = 215
+y = 256
+w = 50
+h = 44
+sta = 0
+font = "font-08"
+picc = "picture-0000"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = ""
+txt_maxl = 4

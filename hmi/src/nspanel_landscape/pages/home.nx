@@ -16,8 +16,8 @@ on home.load:
     sys0=sys0/2
     if(sys1==0)
     {
-      vis indr_temp,sys2
-      vis indr_temp_icon,sys2
+      vis indr_temp,0 // Kurantowka: no indoor temperature on home
+      vis indr_temp_icon,0 // Kurantowka: no indoor temperature on home
     }else if(sys1==1)
     {
       vis outdoor_temp,sys2
