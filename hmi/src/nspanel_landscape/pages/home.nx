@@ -356,3 +356,33 @@ on bt_lang.down:
 on bt_lang.up:
   click_timer.en=0
   short_click_tm.en=1
+
+// Kurantowka: arrows beside the footer walk through the heating thermostats, like a horizontal swipe
+on btn_prev.up:
+  if(api==0)
+  {
+    call report_api_unavailable
+  }else
+  {
+    printh 92
+    prints "localevent",0
+    printh 00
+    prints "home,swipe,prev",0
+    printh 00
+    printh FF FF FF
+  }
+
+// Kurantowka: arrows beside the footer walk through the heating thermostats, like a horizontal swipe
+on btn_next.up:
+  if(api==0)
+  {
+    call report_api_unavailable
+  }else
+  {
+    printh 92
+    prints "localevent",0
+    printh 00
+    prints "home,swipe,next",0
+    printh 00
+    printh FF FF FF
+  }

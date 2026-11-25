@@ -792,9 +792,9 @@ txt_maxl = 3
 [[component]]
 name = "lbl_footer"
 type = "text"
-x = 16
+x = 52
 y = 422
-w = 288
+w = 216
 h = 22
 sta = 0
 font = "font-00"
@@ -804,3 +804,35 @@ xcen = 1
 ycen = 1
 txt = "Panel Sterowania"
 txt_maxl = 30
+
+[[component]]
+name = "btn_prev"
+type = "text"
+x = 0
+y = 417
+w = 50
+h = 32
+sta = 0
+font = "font-08"
+picc = "picture-0000"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = ""
+txt_maxl = 4
+
+[[component]]
+name = "btn_next"
+type = "text"
+x = 270
+y = 417
+w = 50
+h = 32
+sta = 0
+font = "font-08"
+picc = "picture-0000"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = ""
+txt_maxl = 4

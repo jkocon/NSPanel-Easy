@@ -643,12 +643,12 @@ y = 112
 w = 50
 h = 58
 sta = 0
-font = "font-08"
+font = "font-10"
 picc = "picture-0037"
 pco = "#ffffff"
 xcen = 1
 ycen = 1
-txt = ""
+txt = ""
 txt_maxl = 4
 
 [[component]]
@@ -659,10 +659,10 @@ y = 112
 w = 50
 h = 58
 sta = 0
-font = "font-08"
+font = "font-10"
 picc = "picture-0037"
 pco = "#ffffff"
 xcen = 1
 ycen = 1
-txt = ""
+txt = ""
 txt_maxl = 4

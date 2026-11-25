@@ -797,3 +797,35 @@ xcen = 1
 ycen = 1
 txt = "Panel Sterowania"
 txt_maxl = 30
+
+[[component]]
+name = "btn_prev"
+type = "text"
+x = 0
+y = 278
+w = 46
+h = 40
+sta = 0
+font = "font-08"
+picc = "picture-0000"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = ""
+txt_maxl = 4
+
+[[component]]
+name = "btn_next"
+type = "text"
+x = 434
+y = 278
+w = 46
+h = 40
+sta = 0
+font = "font-08"
+picc = "picture-0000"
+pco = "#ffffff"
+xcen = 1
+ycen = 1
+txt = ""
+txt_maxl = 4
