@@ -671,7 +671,7 @@ txt_maxl = 4
 [[component]]
 name = "btn_home"
 type = "text"
-x = 200
+x = 195
 y = 266
 w = 66
 h = 54
